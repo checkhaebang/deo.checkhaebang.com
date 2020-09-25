@@ -1,0 +1,20 @@
+---
+name: Pre-changelog
+
+on: [push]
+
+jobs:
+  changelog:
+    name: Show pre-changelog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+      - name: Show pre-changelog
+        run: |
+          npm install
+          echo "[release version] $(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
+          echo "[description]"
+          npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version

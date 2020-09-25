@@ -1,0 +1,23 @@
+{
+  "configurations": [
+    {
+      "name": "Start App",
+      "request": "launch",
+      "runtimeArgs": ["run-script", "start"],
+      "runtimeExecutable": "npm",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node",
+      "console": "integratedTerminal",
+      "env": {
+        "HOST": "0.0.0.0"
+      }
+    },
+    {
+      "name": "Chrome debug",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://127.0.0.1:3000",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
