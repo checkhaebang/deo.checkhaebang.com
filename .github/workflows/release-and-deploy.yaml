@@ -40,7 +40,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          VERSION=$(npm run next-version | tail -1)
+          VERSION=$(npm run version:next | tail -1)
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
           DESCRIPTION="${DESCRIPTION//'%'/'%25'}"
           DESCRIPTION="${DESCRIPTION//$'\n'/'%0A'}"
