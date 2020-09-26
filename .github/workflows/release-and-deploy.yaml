@@ -94,7 +94,7 @@ jobs:
               attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: `v${{ env.VERSION }}\n\n${{ env.SLACK_DESCRIPTION }}`
+                  text: `*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
                 }
               ]
             }
