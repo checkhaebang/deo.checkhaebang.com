@@ -17,7 +17,12 @@ jobs:
           npm install
           echo "[release version] $(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
           echo "[description]"
-          npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version
+          DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
+          DESCRIPTION="${DESCRIPTION//'%'/'%25'}"
+          DESCRIPTION="${DESCRIPTION//$'\n'/'%0A'}"
+          DESCRIPTION="${DESCRIPTION//$'\r'/'%0D'}"
+          echo "::set-env name=DESCRIPTION::$DESCRIPTION"
+          echo "$DESCRIPTION"
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
@@ -27,7 +32,7 @@ jobs:
           custom_payload: |
             {
               username: 'github',
-              attachements: [
+              attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                   text: `${{ env.DESCRIPTION }}`
