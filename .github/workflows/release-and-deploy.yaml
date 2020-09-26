@@ -95,7 +95,7 @@ jobs:
               attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: `*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
+                  text: `*[Workflow]*\n${process.env.AS_WORKFLOW}\n*[Job]*\n${process.env.AS_JOB} (${process.env.AS_COMMIT}\n*[Repository]*\n${process.env.AS_REPO}@${process.env.AS_REF}\n*[Author]*\n${process.env.AS_AUTHOR}\n*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
                 }
               ]
             }
