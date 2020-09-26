@@ -18,3 +18,23 @@ jobs:
           echo "[release version] $(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
           echo "[description]"
           npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version
+      - name: Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          job_name: release notification
+          status: custom
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          custom_payload: |
+            {
+              username: 'github',
+              attachements: [
+                {
+                  color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+                  text: '${{ env.DESCRIPTION }}'
+                }
+              ]
+            }
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
