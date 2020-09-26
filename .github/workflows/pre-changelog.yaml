@@ -18,8 +18,10 @@ jobs:
           echo "[release version] $(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
           echo "[description]"
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
+          DESCRIPTION="${DESCRIPTION//'%'/%}"
+          DESCRIPTION="${DESCRIPTION//$'\n'/\n}"
+          DESCRIPTION="${DESCRIPTION//$'\r'/\n}"
           echo "::set-env name=DESCRIPTION::$DESCRIPTION"
-          echo "$DESCRIPTION"
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
