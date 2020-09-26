@@ -42,10 +42,17 @@ jobs:
           git config --local user.name "GitHub Action"
           VERSION=$(npm run version:next | tail -1)
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
-          DESCRIPTION="${DESCRIPTION//'%'/'%25'}"
-          DESCRIPTION="${DESCRIPTION//$'\n'/'%0A'}"
-          DESCRIPTION="${DESCRIPTION//$'\r'/'%0D'}"
-          echo "::set-env name=DESCRIPTION::$DESCRIPTION"
+          
+          RELEASE_DESCRIPTION="${DESCRIPTION//'%'/'%25'}"
+          RELEASE_DESCRIPTION="${DESCRIPTION//$'\n'/'%0A'}"
+          RELEASE_DESCRIPTION="${DESCRIPTION//$'\r'/'%0D'}"
+          
+          SLACK_DESCRIPTION="${DESCRIPTION//'%'/%}"
+          SLACK_DESCRIPTION="${DESCRIPTION//$'\n'/\\n}"
+          SLACK_DESCRIPTION="${DESCRIPTION//$'\r'/\\n}"
+          
+          echo "::set-env name=RELEASE_DESCRIPTION::$RELEASE_DESCRIPTION"
+          echo "::set-env name=SLACK_DESCRIPTION::$SLACK_DESCRIPTION"
           echo "::set-env name=VERSION::$VERSION"
           npx standard-version
       - name: Push changes
@@ -62,7 +69,7 @@ jobs:
           tag_name: v${{ env.VERSION }}
           release_name: Release v${{ env.VERSION }}
           body: |
-            ${{ env.DESCRIPTION }}
+            ${{ env.RELEASE_DESCRIPTION }}
           draft: false
           prerelease: false
       - uses: actions/download-artifact@master
@@ -84,10 +91,10 @@ jobs:
           custom_payload: |
             {
               username: 'github',
-              attachements: [
+              attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: '${{ env.DESCRIPTION }}'
+                  text: `*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
                 }
               ]
             }
