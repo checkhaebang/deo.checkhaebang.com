@@ -18,9 +18,6 @@ jobs:
           echo "[release version] $(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
           echo "[description]"
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
-          DESCRIPTION="${DESCRIPTION//'%'/'%25'}"
-          DESCRIPTION="${DESCRIPTION//$'\n'/'%0A'}"
-          DESCRIPTION="${DESCRIPTION//$'\r'/'%0D'}"
           echo "::set-env name=DESCRIPTION::$DESCRIPTION"
           echo "$DESCRIPTION"
       - name: Slack notification
@@ -35,7 +32,7 @@ jobs:
               attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: "${{ env.DESCRIPTION }}"
+                  text: `${{ env.DESCRIPTION }}`
                 }
               ]
             }
