@@ -42,14 +42,15 @@ jobs:
           git config --local user.name "GitHub Action"
           VERSION=$(npm run version:next | tail -1)
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
+          RELEASE_DESCRIPTION=$DESCRIPTION
+          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//'%'/'%25'}"
+          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\n'/'%0A'}"
+          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\r'/'%0D'}"
           
-          RELEASE_DESCRIPTION="${DESCRIPTION//'%'/'%25'}"
-          RELEASE_DESCRIPTION="${DESCRIPTION//$'\n'/'%0A'}"
-          RELEASE_DESCRIPTION="${DESCRIPTION//$'\r'/'%0D'}"
-          
-          SLACK_DESCRIPTION="${DESCRIPTION//'%'/%}"
-          SLACK_DESCRIPTION="${DESCRIPTION//$'\n'/\\n}"
-          SLACK_DESCRIPTION="${DESCRIPTION//$'\r'/\\n}"
+          SLACK_DESCRIPTION=$DESCRIPTION
+          SLACK_DESCRIPTION="${SLACK_DESCRIPTION//'%'/%}"
+          SLACK_DESCRIPTION="${SLACK_DESCRIPTION//$'\n'/\\n}"
+          SLACK_DESCRIPTION="${SLACK_DESCRIPTION//$'\r'/\\n}"
           
           echo "::set-env name=RELEASE_DESCRIPTION::$RELEASE_DESCRIPTION"
           echo "::set-env name=SLACK_DESCRIPTION::$SLACK_DESCRIPTION"
