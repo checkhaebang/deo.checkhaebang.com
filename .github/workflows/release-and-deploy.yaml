@@ -94,8 +94,36 @@ jobs:
               username: 'github',
               attachments: [
                 {
+                  author_name: 'Github Action'
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: `*[Workflow]*\n${process.env.AS_WORKFLOW}\n*[Job]*\n${process.env.AS_JOB} (${process.env.AS_COMMIT}\n*[Repository]*\n${process.env.AS_REPO}@${process.env.AS_REF}\n*[Author]*\n${process.env.AS_AUTHOR}\n*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
+                  text: `*[Author]*\n${process.env.AS_AUTHOR}\n*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
+                  fields: [
+                    {
+                      title: 'workflow',
+                      value: '${process.env.AS_WORKFLOW}',
+                      short: true
+                    },
+                    {
+                      title: 'repo',
+                      value: '${process.env.AS_REPO}'
+                      short: true
+                    },
+                    {
+                      title: 'author',
+                      value: '${process.env.AS_AUTHOR}',
+                      short: true
+                    },
+                    {
+                      title: 'version',
+                      value: '${{ env.VERSION }}',
+                      short: false
+                    },
+                    {
+                      title: 'description',
+                      value: ' ${{ env.SLACK_DESCRIPTION }}',
+                      short: false
+                    }
+                  ]
                 }
               ]
             }
