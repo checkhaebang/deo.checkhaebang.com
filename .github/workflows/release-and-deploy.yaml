@@ -78,6 +78,7 @@ jobs:
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
+          job_name: release notification
           status: custom
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
           custom_payload: |
@@ -91,7 +92,6 @@ jobs:
               ]
             }
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
         if: always()
