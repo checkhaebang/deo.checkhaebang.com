@@ -35,11 +35,7 @@ jobs:
               attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: `
-                  ```markdown
-                  ${{ env.DESCRIPTION }}
-                  ```
-                  `
+                  text: ` ```markdown\n${{ env.DESCRIPTION }}\n``` `
                 }
               ]
             }
