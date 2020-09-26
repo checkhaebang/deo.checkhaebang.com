@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/nexters-landlords/deo.checkhaebang.com/compare/v0.0.8...v0.0.9) (2020-09-26)
+
+
+### Bug Fixes
+
+* slack message format ([#11](https://github.com/nexters-landlords/deo.checkhaebang.com/issues/11)) ([1a06b9a](https://github.com/nexters-landlords/deo.checkhaebang.com/commit/1a06b9a3ae9dbcbf9f5858e0d31ba54f84ec6717))
+
 ### [0.0.8](https://github.com/nexters-landlords/deo.checkhaebang.com/compare/v0.0.7...v0.0.8) (2020-09-26)
 
 
