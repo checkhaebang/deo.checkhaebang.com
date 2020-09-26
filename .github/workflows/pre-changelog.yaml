@@ -15,13 +15,17 @@ jobs:
       - name: Show pre-changelog
         run: |
           npm install
-          echo "[release version] $(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
+          VERSION=$(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)
+          echo "[release version]"
+          echo "::set-env name=VERSION::$VERSION"
+          
           echo "[description]"
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
           DESCRIPTION="${DESCRIPTION//'%'/%}"
           DESCRIPTION="${DESCRIPTION//$'\n'/\\n}"
           DESCRIPTION="${DESCRIPTION//$'\r'/\\n}"
           echo "::set-env name=DESCRIPTION::$DESCRIPTION"
+          
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
@@ -34,7 +38,7 @@ jobs:
               attachments: [
                 {
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: "${{ env.DESCRIPTION }}"
+                  text: "${{ env.VERSION }}\n${{ env.DESCRIPTION }}"
                 }
               ]
             }
