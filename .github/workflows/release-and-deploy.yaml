@@ -75,3 +75,23 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - name: Slack notification
+        uses: 8398a7/action-slack@v3
+        with:
+          status: custom
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
+          custom_payload: |
+            {
+              username: 'github',
+              attachements: [
+                {
+                  color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
+                  text: '${{ env.DESCRIPTION }}'
+                }
+              ]
+            }
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        if: always()
