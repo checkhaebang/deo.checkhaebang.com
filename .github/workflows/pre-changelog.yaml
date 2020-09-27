@@ -18,7 +18,7 @@ jobs:
           VERSION=$(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)
           echo "[release version]"
           echo "::set-env name=VERSION::$VERSION"
-          
+
           echo "[description]"
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
           DESCRIPTION="${DESCRIPTION//'%'/%}"
@@ -32,39 +32,29 @@ jobs:
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
           custom_payload: |
             {
-              attachments: [
+              text: "Custom Field Check",
+              attachments: [{
+                "author_name": "8398a7@action-slack", // json
+                fallback: 'fallback',
+                color: 'good',
+                title: 'CI Result',
+                text: 'Succeeded',
+                fields: [{
+                  title: 'lower case',
+                  value: 'LOWER CASE CHECK'.toLowerCase(),
+                  short: true
+                },
                 {
-                  color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: 'Github Actions',
-                  fields: [
-                    {
-                      title: 'workflow',
-                      value: '${process.env.AS_WORKFLOW}',
-                      short: true
-                    },
-                    {
-                      title: 'repo',
-                      value: '${process.env.AS_REPO}'
-                      short: true
-                    },
-                    {
-                      title: 'author',
-                      value: '${process.env.AS_AUTHOR}',
-                      short: true
-                    },
-                    {
-                      title: 'version',
-                      value: '${{ env.VERSION }}',
-                      short: false
-                    },
-                    {
-                      title: 'description',
-                      value: ' ${{ env.DESCRIPTION }}',
-                      short: false
-                    }
-                  ]
-                }
-              ]
+                  title: 'reverse',
+                  value: 'gnirts esrever'.split('').reverse().join(''),
+                  short: true
+                },
+                {
+                  title: 'long title1',
+                  value: 'long value1',
+                  short: false
+                }]
+              }]
             }
         env:
           GITHUB_TOKEN: ${{ github.token }}
