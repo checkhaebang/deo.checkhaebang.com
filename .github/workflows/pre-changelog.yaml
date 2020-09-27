@@ -48,7 +48,7 @@ jobs:
                     },
                     {
                       title: '[repo]',
-                      value: `${process.env.AS_REPO}`
+                      value: `${process.env.AS_REPO}`,
                       short: true
                     },
                     {
