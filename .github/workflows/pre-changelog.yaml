@@ -62,7 +62,7 @@ jobs:
                     },
                     {
                       title: 'description',
-                      value: ' ${{ env.SLACK_DESCRIPTION }}',
+                      value: ' ${{ env.DESCRIPTION }}',
                       short: false
                     }
                   ]
