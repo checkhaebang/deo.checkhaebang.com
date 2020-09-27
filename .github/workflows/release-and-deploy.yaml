@@ -46,12 +46,12 @@ jobs:
           RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//'%'/'%25'}"
           RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\n'/'%0A'}"
           RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\r'/'%0D'}"
-          
+
           SLACK_DESCRIPTION=$DESCRIPTION
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//'%'/%}"
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//$'\n'/\\n}"
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//$'\r'/\\n}"
-          
+
           echo "::set-env name=RELEASE_DESCRIPTION::$RELEASE_DESCRIPTION"
           echo "::set-env name=SLACK_DESCRIPTION::$SLACK_DESCRIPTION"
           echo "::set-env name=VERSION::$VERSION"
@@ -86,16 +86,40 @@ jobs:
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
-          job_name: release notification
           status: custom
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
           custom_payload: |
             {
-              username: 'github',
+              text: 'Release ${{ env.VERSION }}',
               attachments: [
                 {
+                  "author_name": `${process.env.AS_AUTHOR}`,
+                  fallback: 'fallback',
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  text: `*[Workflow]*\n${process.env.AS_WORKFLOW}\n*[Job]*\n${process.env.AS_JOB} (${process.env.AS_COMMIT}\n*[Repository]*\n${process.env.AS_REPO}@${process.env.AS_REF}\n*[Author]*\n${process.env.AS_AUTHOR}\n*[Version]*\nv${{ env.VERSION }}\n\n*[Description]*\n${{ env.SLACK_DESCRIPTION }}`
+                  title: 'pre-changelog',
+                  text: `${{ job.status }}`,
+                  fields: [
+                    {
+                      title: '[Workflow]',
+                      value: `${process.env.AS_WORKFLOW}`,
+                      short: true
+                    },
+                    {
+                      title: '[Repository]',
+                      value: `${process.env.AS_REPO}`,
+                      short: true
+                    },
+                    {
+                      title: '[Version]',
+                      value: '${{ env.VERSION }}',
+                      short: false
+                    },
+                    {
+                      title: '[Description]',
+                      value: '${{ env.SLACK_DESCRIPTION }}',
+                      short: false
+                    }
+                  ]
                 }
               ]
             }
