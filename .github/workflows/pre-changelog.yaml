@@ -35,7 +35,7 @@ jobs:
               text: '${{ env.VERSION }} pre-changelog',
               attachments: [
                 {
-                  "author_name": '${process.env.AS_AUTHOR}',
+                  "author_name": `${process.env.AS_AUTHOR}`,
                   fallback: 'fallback',
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                   title: 'pre-changelog',
