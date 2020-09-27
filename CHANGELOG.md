@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v0.0.9...v0.0.10) (2020-09-27)
+
+
+### Bug Fixes
+
+* modify slack message format ([#12](https://github.com/checkhaebang/deo.checkhaebang.com/issues/12)) ([98e38bd](https://github.com/checkhaebang/deo.checkhaebang.com/commit/98e38bd33436c9fa6230d8b1fa6ca67b13c1ae73))
+
 ### [0.0.9](https://github.com/nexters-landlords/deo.checkhaebang.com/compare/v0.0.8...v0.0.9) (2020-09-26)
 
 
