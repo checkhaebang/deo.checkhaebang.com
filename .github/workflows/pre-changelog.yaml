@@ -39,15 +39,15 @@ jobs:
                   fallback: 'fallback',
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                   title: 'pre-changelog',
-                  text: '${{ job.status }}',
+                  text: `${{ job.status }}`,
                   fields: [
                     {
-                      title: 'version',
+                      title: '[version]',
                       value: '${{ env.VERSION }}',
                       short: false
                     },
                     {
-                      title: 'description',
+                      title: '[description]',
                       value: ' ${{ env.DESCRIPTION }}',
                       short: false
                     }
