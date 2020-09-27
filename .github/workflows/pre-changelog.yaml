@@ -35,7 +35,6 @@ jobs:
               username: 'github',
               attachments: [
                 {
-                  "author_name": 'Github Action',
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                   text: 'Github Actions',
                   fields: [
