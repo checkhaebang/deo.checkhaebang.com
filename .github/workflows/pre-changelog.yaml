@@ -18,7 +18,7 @@ jobs:
           VERSION=$(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)
           echo "[release version]"
           echo "::set-env name=VERSION::$VERSION"
-          
+
           echo "[description]"
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
           DESCRIPTION="${DESCRIPTION//'%'/%}"
