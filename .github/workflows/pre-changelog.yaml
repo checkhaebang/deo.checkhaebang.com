@@ -28,7 +28,6 @@ jobs:
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
-          job_name: release notification
           status: custom
           fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
           custom_payload: |
@@ -36,7 +35,7 @@ jobs:
               username: 'github',
               attachments: [
                 {
-                  author_name: 'Github Action',
+                  "author_name": 'Github Action',
                   color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
                   text: 'Github Actions',
                   fields: [
