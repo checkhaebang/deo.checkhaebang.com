@@ -1,8 +1,9 @@
 import React, { ReactElement } from "react";
-import "./App.css";
+import { PersonaAnalysisFragment } from "./persona/components";
+import { questions } from "./persona/mock";
 
-function App(): ReactElement {
-  return <div>deo.checkhaebang.com</div>;
+function CheckHaebangApp(): ReactElement {
+  return <PersonaAnalysisFragment questions={questions} />;
 }
 
-export default App;
+export default CheckHaebangApp;
