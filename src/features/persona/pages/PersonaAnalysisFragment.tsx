@@ -42,6 +42,7 @@ class PersonaAnalysisFragment extends React.Component<Props, State> {
     const { questions, currentIdx, setCurrentIdx }: Props = this.props;
     if (currentIdx > questions?.length) {
       // this.props.saveAnswers();
+      setCurrentIdx(1);
       return <Redirect push to="/" />;
     }
     return (
