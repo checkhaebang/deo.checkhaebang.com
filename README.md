@@ -1,3 +1,5 @@
 # deo.checkhaebang.com
 
-deo checkhaebang
+화면 구조
+
+Layout > Fragment > View

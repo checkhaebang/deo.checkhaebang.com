@@ -1,12 +1,21 @@
+import "react-app-polyfill/ie11";
+import "react-app-polyfill/stable";
+import "tslib";
+
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import { Provider } from "react-redux";
+
+import store from "./store";
 import * as serviceWorker from "./serviceWorker";
+import "./App.css";
+import Root from "./routes";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <Root />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
