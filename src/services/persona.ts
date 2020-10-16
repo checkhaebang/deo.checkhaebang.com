@@ -16,6 +16,7 @@ export function postAnswers(data: Array<number>): Promise<undefined> {
   return new Promise((resolve, _) => {
     setTimeout(() => {
       answers = data;
+      console.log(answers);
       resolve();
     }, 500);
   });
