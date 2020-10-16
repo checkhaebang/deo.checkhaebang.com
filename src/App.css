@@ -1,8 +1,9 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 * {
   box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    "Spoqa Han Sans", sans-serif;
   white-space: pre-wrap;
 }
 body {
@@ -11,14 +12,15 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
-  margin: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 a {
   text-decoration: none;
   cursor: pointer;
 }
 .answer-card:hover {
-  background-color: #ffc856 !important;
+  background-color: #fff9da !important;
 }
 
 #root {
