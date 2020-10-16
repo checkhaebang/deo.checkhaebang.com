@@ -24,48 +24,4 @@ jobs:
           DESCRIPTION="${DESCRIPTION//$'\n'/\\n}"
           DESCRIPTION="${DESCRIPTION//$'\r'/\\n}"
           echo >>$GITHUB_ENV DESCRIPTION=$DESCRIPTION
-      - name: Slack notification
-        uses: 8398a7/action-slack@v3
-        with:
-          status: custom
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-          custom_payload: |
-            {
-              text: 'Release ${{ env.VERSION }}',
-              attachments: [
-                {
-                  "author_name": `${process.env.AS_AUTHOR}`,
-                  fallback: 'fallback',
-                  color: '${{ job.status }}' === 'success' ? 'good' : '${{ job.status }}' === 'failure' ? 'danger' : 'warning',
-                  title: 'pre-changelog',
-                  text: `${{ job.status }}`,
-                  fields: [
-                    {
-                      title: '[Workflow]',
-                      value: `${process.env.AS_WORKFLOW}`,
-                      short: true
-                    },
-                    {
-                      title: '[Repository]',
-                      value: `${process.env.AS_REPO}`,
-                      short: true
-                    },
-                    {
-                      title: '[Version]',
-                      value: '${{ env.VERSION }}',
-                      short: false
-                    },
-                    {
-                      title: '[Description]',
-                      value: '${{ env.DESCRIPTION }}',
-                      short: false
-                    }
-                  ]
-                }
-              ]
-            }
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        if: always()
 
