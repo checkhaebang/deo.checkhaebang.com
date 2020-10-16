@@ -52,10 +52,9 @@ jobs:
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//$'\n'/\\n}"
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//$'\r'/\\n}"
 
-          echo "::set-env name=RELEASE_DESCRIPTION::$RELEASE_DESCRIPTION"
-          echo "::set-env name=SLACK_DESCRIPTION::$SLACK_DESCRIPTION"
-          echo "::set-env name=VERSION::$VERSION"
-          npx standard-version
+          echo >>$GITHUB_ENV RELEASE_DESCRIPTION=$RELEASE_DESCRIPTION
+          echo >>$GITHUB_ENV SLACK_DESCRIPTION=$SLACK_DESCRIPTION
+          echo >>$GITHUB_ENV VERSION=$VERSION
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
