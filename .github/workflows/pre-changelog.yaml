@@ -17,11 +17,13 @@ jobs:
           npm install
           VERSION=$(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)
           echo "[release version]"
-          echo "::set-env name=VERSION::$VERSION"
+          echo >>$GITHUB_ENV VERSION=$(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)
+          echo "$(npx standard-version --dry-run | grep tagging | cut -d ' ' -f4)"
 
           echo "[description]"
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
+          echo "$DESCRIPTION"
           DESCRIPTION="${DESCRIPTION//'%'/%}"
           DESCRIPTION="${DESCRIPTION//$'\n'/\\n}"
           DESCRIPTION="${DESCRIPTION//$'\r'/\\n}"
-          echo "::set-env name=DESCRIPTION::$DESCRIPTION"
+          echo >>$GITHUB_ENV DESCRIPTION=$DESCRIPTION
