@@ -55,6 +55,7 @@ jobs:
           echo >>$GITHUB_ENV RELEASE_DESCRIPTION=$RELEASE_DESCRIPTION
           echo >>$GITHUB_ENV SLACK_DESCRIPTION=$SLACK_DESCRIPTION
           echo >>$GITHUB_ENV VERSION=$VERSION
+          npx standard-version
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
