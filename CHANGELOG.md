@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v0.0.10...v1.1.0) (2020-10-21)
+
+
+### Features
+
+* **persona-questions:** 페르소나 설문 화면 구현  ([#14](https://github.com/checkhaebang/deo.checkhaebang.com/issues/14)) ([d39436e](https://github.com/checkhaebang/deo.checkhaebang.com/commit/d39436e60e94049b01abf9936e7d6d9336f12812))
+
 ### [0.0.10](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v0.0.9...v0.0.10) (2020-09-27)
 
 
