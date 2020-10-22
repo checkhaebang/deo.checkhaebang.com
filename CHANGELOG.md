@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.1.0...v1.2.0) (2020-10-22)
+
+
+### Features
+
+* **landing:** 랜딩 페이지 추가 ([#16](https://github.com/checkhaebang/deo.checkhaebang.com/issues/16)) ([b6987ef](https://github.com/checkhaebang/deo.checkhaebang.com/commit/b6987ef4cda8df6d63b3f6be827e14eac6b5a2d0))
+
 ## [1.1.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v0.0.10...v1.1.0) (2020-10-21)
 
 
