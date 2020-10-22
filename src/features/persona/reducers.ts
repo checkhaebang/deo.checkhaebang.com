@@ -6,6 +6,7 @@ import {
   postAnswersAsync,
   setCurrentIdx,
   addAnswer,
+  clearAnswer,
 } from "./actions";
 import { questions as questionsMock } from "./mock";
 
@@ -34,12 +35,11 @@ export const currentIdx = createReducer(1).handleAction(
   (_, action) => action.payload
 );
 
-export const answers = createReducer([] as Array<number>).handleAction(
-  addAnswer,
-  (state, action) => {
+export const answers = createReducer([] as Array<number>)
+  .handleAction(addAnswer, (state, action) => {
     return [...state, action.payload];
-  }
-);
+  })
+  .handleAction(clearAnswer, () => []);
 
 const personaReducer = combineReducers({
   isLoading,
