@@ -17,3 +17,4 @@ export const setCurrentIdx = createAction("SET_CURRENT_IDX")<number>();
 export const addAnswer = createAction("ADD_ANSWER", (uid: number) => uid)<
   number
 >();
+export const clearAnswer = createAction("CLEAR_ANSWER")<void>();
