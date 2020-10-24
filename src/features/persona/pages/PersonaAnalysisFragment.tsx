@@ -46,8 +46,9 @@ class PersonaAnalysisFragment extends React.Component<Props, State> {
     const { questions, isLoading, currentIdx }: Props = this.props;
 
     return isLoading ? (
-      <p style={{ marginLeft: "24px" }}>Loading...</p>
+      <div>Loading...</div>
     ) : (
+      // <p style={{ marginLeft: "24px" }}>Loading...</p>
       <div style={this.style()}>
         <AnswersView
           question={questions[currentIdx - 1]}
@@ -65,7 +66,7 @@ class PersonaAnalysisFragment extends React.Component<Props, State> {
       setCurrentIdx(currentIdx + 1);
     } else {
       saveAnswers();
-      history.push("/");
+      history.push("/persona/analyzing");
     }
   };
 

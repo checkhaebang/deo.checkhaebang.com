@@ -1,3 +1,3 @@
 import PersonaAnalysisFragment from "./PersonaAnalysisFragment";
-
-export default PersonaAnalysisFragment;
+import AnalyzingView from "./AnalyzingView";
+export { PersonaAnalysisFragment, AnalyzingView };
