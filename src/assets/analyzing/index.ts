@@ -1,6 +1,5 @@
 import img_0 from "./images/img_0.png";
 import img_1 from "./images/img_1.png";
-import analyzing from "./analyzing.json";
 
 export default {
   v: "5.5.7",
