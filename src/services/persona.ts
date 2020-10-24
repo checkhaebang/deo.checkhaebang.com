@@ -8,7 +8,7 @@ export function fetchQuestions(): Promise<Array<PersonaQuestion>> {
   return new Promise((resolve, _) => {
     setTimeout(() => {
       resolve(questions);
-    }, 500);
+    }, 700);
   });
 }
 
@@ -18,6 +18,6 @@ export function postAnswers(data: Array<number>): Promise<undefined> {
       answers = data;
       console.log(answers);
       resolve();
-    }, 500);
+    }, 5000);
   });
 }
