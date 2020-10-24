@@ -39,7 +39,6 @@
     "@types/react-router-dom": "^5.1.6",
     "@types/react-router-redux": "^5.0.18",
     "craco-alias": "^2.1.1",
-    "lottie-react-web": "^2.2.2",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
