@@ -1,3 +1,4 @@
-import PersonaAnalysisFragment from "./PersonaAnalysisFragment";
-import AnalyzingView from "./AnalyzingView";
-export { PersonaAnalysisFragment, AnalyzingView };
+import Questions from "./Questions";
+import Analyzing from "./Analyzing";
+import Result from "./Result";
+export { Questions, Analyzing, Result };
