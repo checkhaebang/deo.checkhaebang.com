@@ -1,9 +1,3 @@
 # pages
 
-## fragment
-
-큰 틀
-
-## view
-
-component의 조합으로 fragment의 view
+Component를 조합하여 route의 path를 구성

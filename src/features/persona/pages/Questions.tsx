@@ -11,7 +11,8 @@ import {
   clearAnswer,
 } from "../actions";
 
-import AnswersView from "./AnswerView";
+import AnswersView from "../components/AnswerView";
+import { BasicLayout } from "~/layouts";
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.persona.isLoading,
@@ -32,7 +33,7 @@ type Props = ReturnType<typeof mapStateToProps> &
 type State = { answers: Array<number>; currentIdx: number };
 
 /** 페르소나 분석 Fragment */
-class PersonaAnalysisFragment extends React.Component<Props, State> {
+class Questions extends React.Component<Props, State> {
   componentDidMount() {
     this.props.fetchQuestions();
   }
@@ -46,16 +47,17 @@ class PersonaAnalysisFragment extends React.Component<Props, State> {
     const { questions, isLoading, currentIdx }: Props = this.props;
 
     return isLoading ? (
-      <div>Loading...</div>
+      <div>Loading..</div>
     ) : (
-      // <p style={{ marginLeft: "24px" }}>Loading...</p>
-      <div style={this.style()}>
-        <AnswersView
-          question={questions[currentIdx - 1]}
-          onClick={this.onAnswerClick}
-        />
-        <ProgressBar current={currentIdx} max={questions?.length} />
-      </div>
+      <BasicLayout>
+        <div style={this.style()}>
+          <AnswersView
+            question={questions[currentIdx - 1]}
+            onClick={this.onAnswerClick}
+          />
+          <ProgressBar current={currentIdx} max={questions?.length} />
+        </div>
+      </BasicLayout>
     );
   }
 
@@ -78,4 +80,4 @@ class PersonaAnalysisFragment extends React.Component<Props, State> {
   });
 }
 
-export default connect(mapStateToProps, dispatchProps)(PersonaAnalysisFragment);
+export default connect(mapStateToProps, dispatchProps)(Questions);

@@ -2,7 +2,7 @@
 import React, { CSSProperties, ReactElement } from "react";
 import { connect } from "react-redux";
 import { PersonaQuestion } from "../models";
-import { AnswerCard } from "../components";
+import { AnswerCard } from ".";
 import * as actions from "../actions";
 
 type defaultProps = {

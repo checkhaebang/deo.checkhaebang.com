@@ -1,22 +1,17 @@
-import React, { ReactElement } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import {
-  PersonaAnalysisFragment,
-  AnalyzingView,
-} from "~/features/persona/pages";
-import { BasicLayout } from "~/layouts";
-import LandingPage from "~/features/landing";
+import React from "react";
 
-export default function Root(): ReactElement {
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/persona/analyzing" component={AnalyzingView} />
-        <Route path="/" exact component={LandingPage} />
-        <BasicLayout>
-          <Route path="/persona" component={PersonaAnalysisFragment} />
-        </BasicLayout>
-      </Switch>
-    </BrowserRouter>
-  );
-}
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import LandingPage from "~/features/landing";
+import PersonaRouter from "~/features/persona/routes";
+
+const Root: React.FC = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" exact component={LandingPage} />
+      <Route path="/persona" component={PersonaRouter} />
+      <Redirect path="*" to="/" />
+    </Switch>
+  </BrowserRouter>
+);
+
+export default Root;
