@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.3.0...v1.4.0) (2020-10-26)
+
+
+### Features
+
+* **persona-result:** 페르소나 결과 페이지 추가 ([#18](https://github.com/checkhaebang/deo.checkhaebang.com/issues/18)) ([b35a313](https://github.com/checkhaebang/deo.checkhaebang.com/commit/b35a313cb478c38b8775a0eccd8b3df4e67a2922))
+
 ## [1.3.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.2.0...v1.3.0) (2020-10-24)
 
 
