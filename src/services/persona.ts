@@ -1,4 +1,5 @@
 import { PersonaQuestion } from "PersonaModels";
+
 import { questions as questionsMock } from "../features/persona/mock";
 
 const questions: Array<PersonaQuestion> = questionsMock;
@@ -18,6 +19,6 @@ export function postAnswers(data: Array<number>): Promise<undefined> {
       answers = data;
       console.log(answers);
       resolve();
-    }, 5000);
+    }, 2000);
   });
 }
