@@ -4,7 +4,7 @@ import { createReducer } from "typesafe-actions";
 import { loadChecklistAsync } from "./actions";
 import { checklist as checklistMock } from "./mock";
 
-export const isLoading = createReducer(false as boolean)
+export const isLoading = createReducer(true as boolean)
   .handleAction([loadChecklistAsync.request], () => true)
   .handleAction(
     [loadChecklistAsync.success, loadChecklistAsync.failure],

@@ -35,16 +35,15 @@ export default function LandingPage({
           <p style={startButtonTextStyle()}>{TEXT().startButton}</p>
         </div>
         <div style={skipButtonStyle()}>
-          <p style={skipButtonTextStyle()}>{TEXT().skipButton}</p>
-          <div
-            style={{
-              width: 167,
-              height: 2,
-              opacity: 0.5,
-              marginTop: 2,
-              backgroundColor: color.grayscale29,
+          <p
+            style={skipButtonTextStyle()}
+            onClick={() => {
+              history.push("login");
             }}
-          ></div>
+          >
+            {TEXT().skipButton}
+          </p>
+          <div style={skipButtonUnderlineStyle()} />
         </div>
       </div>
     </div>
@@ -178,4 +177,12 @@ const skipButtonTextStyle = (): CSSProperties => ({
   textAlign: "center",
   margin: 0,
   color: color.grayscale29,
+});
+
+const skipButtonUnderlineStyle = (): CSSProperties => ({
+  width: 167,
+  height: 2,
+  opacity: 0.5,
+  marginTop: 2,
+  backgroundColor: color.grayscale29,
 });

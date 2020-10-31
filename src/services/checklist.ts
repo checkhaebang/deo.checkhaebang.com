@@ -6,6 +6,6 @@ export function fetchCheckQuestions(): Promise<Array<CheckQuestion>> {
   return new Promise((resolve, _) => {
     setTimeout(() => {
       resolve(checklist);
-    }, 2000);
+    }, 3000);
   });
 }

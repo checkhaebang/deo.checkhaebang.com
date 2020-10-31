@@ -47,7 +47,10 @@ export default function Result(): ReactElement {
       </div>
       <div
         style={체크리스트_보러가기_버튼_style()}
-        onClick={() => history.push("/checklist/creating")}
+        onClick={() => {
+          console.log("go");
+          history.push("/checklist/creating");
+        }}
       >
         <p style={체크리스트_보러가기_버튼_텍스트_style()}>
           나만의 체크리스트 보러가기
