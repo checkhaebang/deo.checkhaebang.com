@@ -2,7 +2,7 @@ import React, { CSSProperties, ReactElement } from "react";
 import { persona, facebookIcon, kakaoIcon, urlIcon } from "~/assets";
 import reactStringReplace from "react-string-replace";
 import { color } from "~/colors";
-
+import { useHistory } from "react-router-dom";
 type Props = {
   persona_id: number;
   persona: string;
@@ -12,6 +12,7 @@ type Props = {
 };
 
 export default function Result(): ReactElement {
+  const history = useHistory();
   const description = reactStringReplace(
     mock().description,
     /<hr>(.*)<\/hr>/g,
@@ -44,7 +45,13 @@ export default function Result(): ReactElement {
           />
         ))}
       </div>
-      <div style={체크리스트_보러가기_버튼_style()}>
+      <div
+        style={체크리스트_보러가기_버튼_style()}
+        onClick={() => {
+          console.log("go");
+          history.push("/checklist/creating");
+        }}
+      >
         <p style={체크리스트_보러가기_버튼_텍스트_style()}>
           나만의 체크리스트 보러가기
         </p>
