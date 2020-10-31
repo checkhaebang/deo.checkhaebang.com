@@ -1,10 +1,10 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, ReactElement } from "react";
 import Lottie from "react-lottie";
 
 import { color } from "~/colors";
 import complete from "~/assets/complete";
 
-export default function Google() {
+export default function Google(): ReactElement {
   return (
     <div style={page_style()}>
       <div style={{ marginTop: 72 }}>
