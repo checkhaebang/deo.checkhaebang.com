@@ -125,19 +125,7 @@ class Add extends React.Component {
               </div>
             ))}
           </div>
-          <div
-            style={{
-              width: 312,
-              height: 54,
-              margin: "16px 24px 0 24px",
-              display: "flex",
-              justifyContent: "center",
-              borderRadius: 4,
-              boxShadow: "0 1px 1px 0 rgba(0, 0, 0, 0.03)",
-              backgroundColor: color.primaryYellow,
-              cursor: "pointer",
-            }}
-          >
+          <div style={this.방_추가하기_버튼_style()}>
             <p style={this.버튼_글씨_style()}>방 추가하기</p>
           </div>
         </div>
@@ -148,7 +136,6 @@ class Add extends React.Component {
     display: "flex",
     flexDirection: "column",
     width: "100%",
-    height: 660,
   });
   썸네일_영역_style = (): CSSProperties => ({
     width: 312,
@@ -209,6 +196,17 @@ class Add extends React.Component {
     opacity: 0.6,
     color: color.grayscale29,
     textAlign: "center",
+    cursor: "pointer",
+  });
+  방_추가하기_버튼_style = (): CSSProperties => ({
+    width: 312,
+    height: 54,
+    margin: "16px 24px 24px 24px",
+    display: "flex",
+    justifyContent: "center",
+    borderRadius: 4,
+    boxShadow: "0 1px 1px 0 rgba(0, 0, 0, 0.03)",
+    backgroundColor: color.primaryYellow,
     cursor: "pointer",
   });
   버튼_글씨_style = (): CSSProperties => ({ fontWeight: "bold" });
