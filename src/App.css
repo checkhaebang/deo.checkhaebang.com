@@ -36,3 +36,13 @@ a {
     max-width: 360px;
   }
 }
+
+.crawling_url::placeholder {
+  font-size: 14px;
+  color: #c9c9c9;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.32;
+  letter-spacing: normal;
+}
