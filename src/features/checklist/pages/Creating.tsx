@@ -1,4 +1,4 @@
-import React, { ReactElement, CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 import Lottie from "react-lottie";
 import { connect } from "react-redux";
 import { RootState } from "typesafe-actions";
