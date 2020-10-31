@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { BasicLayout } from "~/layouts";
 import Crawling from "./Crawling";
+import Add from "./Add";
 
 class Rooms extends React.Component {
   render(): ReactElement {
@@ -12,4 +13,4 @@ class Rooms extends React.Component {
   }
 }
 
-export { Rooms, Crawling };
+export { Rooms, Crawling, Add };

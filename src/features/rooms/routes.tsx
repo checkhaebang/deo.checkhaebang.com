@@ -6,7 +6,7 @@ import {
   RouteComponentProps,
   withRouter,
 } from "react-router-dom";
-import { Crawling, Rooms } from "./pages";
+import { Crawling, Rooms, Add } from "./pages";
 
 const RoomRouter: React.FC<RouteComponentProps> = (props) => {
   const { match } = props;
@@ -15,6 +15,7 @@ const RoomRouter: React.FC<RouteComponentProps> = (props) => {
     <Switch>
       <Route path={`${match.url}`} exact component={Rooms} />
       <Route path={`${match.url}/crawling`} exact component={Crawling} />
+      <Route path={`${match.url}/add`} exact component={Add} />
       <Redirect path={`${match.url}*`} exact to={`${match.url}`} />
     </Switch>
   );

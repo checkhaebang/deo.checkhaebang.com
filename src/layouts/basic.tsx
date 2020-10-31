@@ -37,6 +37,7 @@ type TitleBarProps = {
 
 /** 타이틀 바 */
 function TitleBar({ has_back, title, closeable }: TitleBarProps): ReactElement {
+  const icon_size = 16;
   const leftMargin = has_back ? 24 : 0;
   const rightMargin = closeable ? 24 : 0;
   const history = useHistory();
@@ -57,8 +58,8 @@ function TitleBar({ has_back, title, closeable }: TitleBarProps): ReactElement {
       ) : (
         <img
           style={{
-            marginLeft: `-${leftMargin}px`,
-            marginRight: `-${rightMargin}px`,
+            marginLeft: `-${has_back ? leftMargin + icon_size : 0}px`,
+            marginRight: `-${closeable ? rightMargin + icon_size : 0}px`,
           }}
           alt="title-logo"
           src={TITLE_LOGO}
