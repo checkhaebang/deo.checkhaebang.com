@@ -6,7 +6,7 @@ class Crawling extends React.Component {
   render(): ReactElement {
     return (
       <BasicLayout
-        titleBarProps={{ title: "자취방 추가하기", closeable: true }}
+        titleBarProps={{ p_title: "자취방 추가하기", closeable: true }}
       >
         <div style={this.style()}>
           <p style={this.불러올_수_있어요_style()}>

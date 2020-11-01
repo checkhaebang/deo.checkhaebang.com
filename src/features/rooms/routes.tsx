@@ -6,7 +6,7 @@ import {
   RouteComponentProps,
   withRouter,
 } from "react-router-dom";
-import { Crawling, Rooms, Add } from "./pages";
+import Rooms, { Crawling, Add } from "./pages";
 
 const RoomRouter: React.FC<RouteComponentProps> = (props) => {
   const { match } = props;

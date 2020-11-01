@@ -88,7 +88,7 @@ class Add extends React.Component {
   render(): ReactElement {
     return (
       <BasicLayout
-        titleBarProps={{ has_back: true, title: "방 직접 입력하기" }}
+        titleBarProps={{ has_back: true, p_title: "방 직접 입력하기" }}
       >
         <div style={this.화면_영역_style()}>
           <div style={this.썸네일_영역_style()}>
