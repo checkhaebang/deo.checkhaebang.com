@@ -48,9 +48,10 @@ function DropDown({ items, select, is_open }: Props): ReactElement {
 const 컨테이너_style = (is_open: boolean): CSSProperties => {
   return {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     flexDirection: "row",
     borderBottom: "2px solid black",
+    width: 117,
     marginBottom: -5,
     cursor: "pointer",
     backgroundColor: `${is_open ? color.basicBlack : color.grayscalef9}`,
@@ -61,9 +62,8 @@ const 선택된_내용_style = (is_open: boolean): CSSProperties => {
     fontSize: 22,
     height: 30,
     padding: 0,
-    margin: 0,
+    margin: "0 6px 2px 8px",
     fontWeight: "bold",
-    marginRight: 6,
     color: `${is_open ? color.basicWhite : color.basicBlack}`,
   };
 };
@@ -86,6 +86,7 @@ const icon_style = (is_open: boolean): CSSProperties => {
     alignSelf: "center",
     width: 6,
     height: 6,
+    marginRight: 8,
     borderLeft: "6px solid transparent",
     borderRight: "6px solid transparent",
     ...icon,
@@ -104,7 +105,7 @@ function ListView({ items, visible, select }: ListViewProps): ReactElement {
         display: `${visible ? "block" : "none"}`,
         backgroundColor: color.basicWhite,
         padding: "1px 0 1 0",
-        marginTop: 3,
+        marginTop: 5,
         border: `1px solid ${color.grayscalec9}`,
       }}
     >
@@ -131,9 +132,18 @@ function ListItemView({
   const { text } = textViewProps;
   const { select, index } = radioButtonProps;
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <div
-        style={{ display: "flex", flexDirection: "row" }}
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+        }}
         onClick={() => {
           dispatch(setSelect(index));
           dispatch(setMenuOpen(false));
@@ -144,10 +154,11 @@ function ListItemView({
       </div>
       <div
         style={{
-          marginTop: 11,
+          marginTop: 12,
           width: 101,
           height: 1,
           backgroundColor: color.grayscalef9,
+          alignSelf: "center",
         }}
       />
     </div>
@@ -165,7 +176,7 @@ function TextView({ text }: TextViewProps): ReactElement {
         height: 22,
         fontSize: 16,
         fontWeight: "bold",
-        margin: "12px 0 0 4px",
+        margin: "10px 0 0 4px",
         color: color.basicBlack,
         cursor: "pointer",
       }}
