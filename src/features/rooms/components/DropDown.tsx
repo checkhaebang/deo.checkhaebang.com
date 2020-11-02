@@ -17,7 +17,9 @@ type State = {
 function DropDown({ items, select, is_open }: Props): ReactElement {
   const ref = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch();
-  const handleOutsideClick = (e: any) => {
+  const handleOutsideClick = (e: MouseEvent): void => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore: Unreachable code error
     if (ref.current && !ref.current.contains(e.target)) {
       dispatch(setMenuOpen(false));
     }
