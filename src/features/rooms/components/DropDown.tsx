@@ -31,7 +31,7 @@ function DropDown({ items, select, is_open }: Props): ReactElement {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  });
   return (
     <div ref={ref}>
       <div style={컨테이너_style(is_open)} onClick={() => toggle()}>
@@ -100,9 +100,10 @@ function ListView({ items, visible, select }: ListViewProps): ReactElement {
     <div
       style={{
         display: `${visible ? "block" : "none"}`,
-        backgroundColor: color.basicBlack,
-        padding: "2px 0 12px 0",
-        marginTop: -8,
+        backgroundColor: color.basicWhite,
+        padding: "1px 0 1 0",
+        marginTop: 3,
+        border: `1px solid ${color.grayscalec9}`,
       }}
     >
       {items?.map((item, index) => (
@@ -128,15 +129,25 @@ function ListItemView({
   const { text } = textViewProps;
   const { select, index } = radioButtonProps;
   return (
-    <div
-      style={{ display: "flex", flexDirection: "row" }}
-      onClick={() => {
-        dispatch(setSelect(index));
-        dispatch(setMenuOpen(false));
-      }}
-    >
-      <TextView text={text} />
-      <RadioButton select={select} index={index} />
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{ display: "flex", flexDirection: "row" }}
+        onClick={() => {
+          dispatch(setSelect(index));
+          dispatch(setMenuOpen(false));
+        }}
+      >
+        <TextView text={text} />
+        <RadioButton select={select} index={index} />
+      </div>
+      <div
+        style={{
+          marginTop: 11,
+          width: 101,
+          height: 1,
+          backgroundColor: color.grayscalef9,
+        }}
+      />
     </div>
   );
 }
@@ -149,8 +160,11 @@ function TextView({ text }: TextViewProps): ReactElement {
     <p
       style={{
         width: 80,
+        height: 22,
+        fontSize: 16,
+        fontWeight: "bold",
         margin: "12px 0 0 4px",
-        color: color.grayscalef9,
+        color: color.basicBlack,
         cursor: "pointer",
       }}
     >
@@ -167,13 +181,14 @@ function RadioButton({ index, select }: RadioButtonProps): ReactElement {
     <div
       style={{
         color: "white",
-        margin: "12px 0 0 0",
+        margin: "14px 8px 0 0",
         alignSelf: "center",
         cursor: "pointer",
         width: 13,
         height: 13,
-        border: `solid 2px ${color.grayscale29}`,
-        borderRadius: 7,
+        lineHeight: 13,
+        border: `solid 3px ${color.grayscale29}`,
+        borderRadius: "50%",
         backgroundColor: `${
           select === index ? color.primaryYellow : color.basicWhite
         }`,
