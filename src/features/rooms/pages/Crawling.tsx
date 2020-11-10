@@ -1,8 +1,9 @@
 import React, { CSSProperties, ReactElement } from "react";
 import { BasicLayout } from "~/layouts";
 import { color } from "~/colors";
+import { RouteComponentProps } from "react-router-dom";
 
-class Crawling extends React.Component {
+class Crawling extends React.Component<RouteComponentProps> {
   render(): ReactElement {
     return (
       <BasicLayout
@@ -20,7 +21,10 @@ class Crawling extends React.Component {
           <div style={this.방_정보_불러오기_style()}>
             <p style={this.버튼_글씨_style()}>방 정보 불러오기</p>
           </div>
-          <div style={this.직접_입력하기_style()}>
+          <div
+            style={this.직접_입력하기_style()}
+            onClick={() => this.props.history.push("/rooms/add")}
+          >
             <p style={this.버튼_글씨_style()}>직접 입력하기</p>
           </div>
         </div>
