@@ -1,10 +1,11 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, ReactElement } from "react";
 import Lottie from "react-lottie";
-
+import { useHistory } from "react-router-dom";
 import { color } from "~/colors";
 import complete from "~/assets/complete";
 
-export default function Google() {
+export default function Google(): ReactElement {
+  const history = useHistory();
   return (
     <div style={page_style()}>
       <div style={{ marginTop: 72 }}>
@@ -17,7 +18,10 @@ export default function Google() {
         />
       </div>
       <p style={보고싶다면_style()}>나만의 체크리스트를 보고 싶다면?</p>
-      <div style={구글계정으로_시작하기_버튼_style()}>
+      <div
+        style={구글계정으로_시작하기_버튼_style()}
+        onClick={() => history.push("/rooms")}
+      >
         <p style={구글계정으로_시작하기_버튼_글자_style()}>
           구글 계정으로 시작하기
         </p>
