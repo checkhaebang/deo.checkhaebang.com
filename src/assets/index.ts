@@ -8,6 +8,22 @@ import persona3 from "./persona2-illust.png";
 import persona4 from "./persona2-illust.png";
 import persona5 from "./persona2-illust.png";
 import persona6 from "./persona2-illust.png";
+import ic_cancel from "./cancel-dark.svg";
+import title_logo_black from "./title-logo-black.svg";
+import title_logo_gray from "./title-logo-gray.svg";
+import ic_human from "./human-normal.svg";
+import img_no_thumbnail from "./no-image-room.svg";
 
 const persona = [persona1, persona2, persona3, persona4, persona5, persona6];
-export { startIllust, facebookIcon, kakaoIcon, urlIcon, persona };
+export {
+  startIllust,
+  facebookIcon,
+  kakaoIcon,
+  urlIcon,
+  persona,
+  ic_cancel,
+  title_logo_black,
+  title_logo_gray,
+  ic_human,
+  img_no_thumbnail,
+};

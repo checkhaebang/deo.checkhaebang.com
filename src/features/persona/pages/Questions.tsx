@@ -49,7 +49,7 @@ class Questions extends React.Component<Props, State> {
     return isLoading ? (
       <div>Loading..</div>
     ) : (
-      <BasicLayout>
+      <BasicLayout titleBarProps={{ has_back: true, is_black_logo: false }}>
         <div style={this.style()}>
           <AnswersView
             question={questions[currentIdx - 1]}
