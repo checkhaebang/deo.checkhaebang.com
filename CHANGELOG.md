@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.5.0...v1.6.0) (2020-11-10)
+
+
+### Features
+
+* **rooms:** 방 등록 및 리스트 UI 구현 ([#20](https://github.com/checkhaebang/deo.checkhaebang.com/issues/20)) ([f19789c](https://github.com/checkhaebang/deo.checkhaebang.com/commit/f19789c9851a29ecf667b35103797936b0e4e1df))
+
 ## [1.5.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.4.0...v1.5.0) (2020-10-31)
 
 
