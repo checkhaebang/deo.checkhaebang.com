@@ -5,9 +5,11 @@ import { connect } from "react-redux";
 import { color } from "~/colors";
 import { BasicLayout, TitleBarProps } from "~/layouts";
 
-import DropDown from "../components/DropDown";
+import { DropDown, RoomCard, AddCard } from "../components";
 import Crawling from "./Crawling";
 import Add from "./Add";
+
+import { loadRooms } from "../actions";
 
 const mapStateToProps = (state: RootState) => ({
   menu: {
@@ -15,15 +17,42 @@ const mapStateToProps = (state: RootState) => ({
     items: state.rooms.menu_items,
     is_open: state.rooms.is_menu_open,
   },
+  isLoading: state.rooms.isLoading,
+  rooms: state.rooms.rooms,
 });
-type Props = ReturnType<typeof mapStateToProps>;
+const dispatchProps = {
+  fetchRooms: loadRooms.request,
+};
+
+type Props = ReturnType<typeof mapStateToProps> & typeof dispatchProps;
 class Rooms extends React.Component<Props> {
+  componentDidMount() {
+    this.props.fetchRooms();
+  }
   render(): ReactElement {
-    const { select, items, is_open } = this.props.menu;
+    const { isLoading, rooms, menu }: Props = this.props;
+    const { select, items, is_open } = menu;
     return (
       <BasicLayout titleBarProps={this.타이틀바_props()}>
         <div style={this.컨테이너_style()}>
           <MenuSection items={items} is_open={is_open} select={select} />
+          <div
+            style={{
+              height: 568,
+              padding: 8,
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gridTemplateRows: "repeat(3, 1fr)",
+              overflow: "scroll",
+            }}
+          >
+            <AddCard />
+            {isLoading ? (
+              <>Loading..</>
+            ) : (
+              rooms.map((room) => <RoomCard room={room} />)
+            )}
+          </div>
         </div>
       </BasicLayout>
     );
@@ -31,7 +60,7 @@ class Rooms extends React.Component<Props> {
   타이틀바_props(): TitleBarProps {
     return {
       backgroundColor: color.primaryYellow,
-      txt_title: "누구's",
+      txt_title: "민철's",
       is_black_logo: true,
       has_profile: true,
     };
@@ -40,7 +69,6 @@ class Rooms extends React.Component<Props> {
     return { display: "flex", flexDirection: "column" };
   }
 }
-
 type MenuSectionProps = {
   items: Array<string>;
   is_open: boolean;
@@ -64,6 +92,7 @@ class MenuSection extends React.Component<MenuSectionProps> {
       flexDirection: "row",
       width: 360,
       height: 58,
+      zIndex: 999,
     };
   }
   메뉴_style(): CSSProperties {
@@ -89,4 +118,4 @@ class MenuSection extends React.Component<MenuSectionProps> {
 
 export { Crawling, Add };
 
-export default connect(mapStateToProps)(Rooms);
+export default connect(mapStateToProps, dispatchProps)(Rooms);
