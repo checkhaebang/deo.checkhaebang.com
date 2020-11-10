@@ -119,6 +119,7 @@ function TitleBar({
           style={rightIconStyle(rightMargin)}
           alt="ic_cancel"
           src={ic_cancel}
+          onClick={() => history.goBack()}
         />
       ) : (
         <></>
