@@ -8,6 +8,7 @@ import { BasicLayout, TitleBarProps } from "~/layouts";
 import { DropDown, RoomCard, AddCard } from "../components";
 import Crawling from "./Crawling";
 import Add from "./Add";
+import Detail from "./Detail";
 
 import { loadRooms } from "../actions";
 
@@ -46,11 +47,11 @@ class Rooms extends React.Component<Props> {
               overflow: "scroll",
             }}
           >
-            <AddCard />
+            <AddCard align="center" height={148} width={148} plusSize={56} />
             {isLoading ? (
               <>Loading..</>
             ) : (
-              rooms.map((room) => <RoomCard room={room} />)
+              rooms.map((room) => <RoomCard key={room.uid} room={room} />)
             )}
           </div>
         </div>
@@ -116,6 +117,6 @@ class MenuSection extends React.Component<MenuSectionProps> {
   }
 }
 
-export { Crawling, Add };
+export { Crawling, Add, Detail };
 
 export default connect(mapStateToProps, dispatchProps)(Rooms);

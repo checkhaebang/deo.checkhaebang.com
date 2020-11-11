@@ -69,26 +69,52 @@ function RoomCard({ room }: Props): ReactElement {
   );
 }
 
-const 카드_방추가_style = (): CSSProperties => ({
+const 카드_방추가_style = (
+  width: number,
+  height: number,
+  plusSize: number
+): CSSProperties => ({
   display: "flex",
   WebkitBoxAlign: "center",
   alignItems: "center",
   WebkitBoxPack: "center",
   justifyContent: "center",
-  fontSize: "56px",
-  width: "148px",
-  height: "148px",
+  fontSize: plusSize,
+  width: width,
+  height: height,
   borderRadius: "6px",
   border: "1px dashed rgb(201, 201, 201)",
   color: "rgb(201, 201, 201)",
   margin: "8px 8px 0 8px",
 });
-function AddCard(): ReactElement {
+
+type AddCardProps = {
+  width: number;
+  height: number;
+  align: string;
+  plusSize: number;
+};
+function AddCard({
+  width,
+  height,
+  align,
+  plusSize,
+}: AddCardProps): ReactElement {
   const history = useHistory();
   return (
-    <div style={카드_style()}>
+    <div
+      style={{
+        width: width,
+        height: height,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        alignSelf: align,
+        justifySelf: align,
+      }}
+    >
       <div
-        style={카드_방추가_style()}
+        style={카드_방추가_style(width, height, plusSize)}
         onClick={() => history.push(`/rooms/crawling`)}
       >
         +
