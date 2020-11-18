@@ -33,6 +33,10 @@ class Rooms extends React.Component<Props> {
   render(): ReactElement {
     const { isLoading, rooms, menu }: Props = this.props;
     const { select, items, is_open } = menu;
+    const width = 148;
+    const height = 148;
+    const plusSize = 56;
+    const margin = "0 0 0 0";
     return (
       <BasicLayout titleBarProps={this.타이틀바_props()}>
         <div style={this.컨테이너_style()}>
@@ -47,11 +51,27 @@ class Rooms extends React.Component<Props> {
               overflow: "scroll",
             }}
           >
-            <AddCard align="center" height={148} width={148} plusSize={56} />
+            <AddCard
+              align="center"
+              margin={margin}
+              height={height}
+              width={width}
+              plusSize={plusSize}
+            />
             {isLoading ? (
               <>Loading..</>
             ) : (
-              rooms.map((room) => <RoomCard key={room.uid} room={room} />)
+              rooms.map((room) => (
+                <RoomCard
+                  key={room.uid}
+                  room={room}
+                  height={height}
+                  width={width}
+                  margin={margin}
+                  label_overlay={false}
+                  is_selected={false}
+                />
+              ))
             )}
           </div>
         </div>
