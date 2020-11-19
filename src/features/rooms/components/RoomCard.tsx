@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactElement } from "react";
 import { useHistory } from "react-router-dom";
-import Room from "../models";
+import Room, { SELLING_TYPE_MATCHER } from "../models";
 import { img_no_thumbnail } from "~/assets";
 import { color } from "~/colors";
 type Props = {
@@ -60,7 +60,7 @@ const 카드_라벨_style = (
     width: width,
     height: height,
     color: is_selected ? color.grayscale29 : color.basicWhite,
-    borderRadius: "6px",
+    borderRadius: 6,
     backgroundColor: is_selected ? color.primaryYellow : color.grayscale29,
     opacity: 0.7,
     display: "flex",
@@ -78,7 +78,7 @@ function RoomCard({
   is_selected,
 }: Props & ThumbnailProps): ReactElement {
   const history = useHistory();
-  const thumbnail = room.thumbnail || img_no_thumbnail;
+  const image = room.image || img_no_thumbnail;
 
   const thumbnail_wrap_props = {
     width: width,
@@ -87,8 +87,8 @@ function RoomCard({
     label_overlay: label_overlay,
   };
   const thumbnail_props = {
-    width: room.thumbnail ? width : width / 2,
-    height: room.thumbnail ? height : height / 2,
+    width: room.image ? width : width / 2,
+    height: room.image ? height : height / 2,
     margin: margin,
     label_overlay: label_overlay,
   };
@@ -101,7 +101,7 @@ function RoomCard({
         <img
           style={카드_썸네일_style(thumbnail_props)}
           alt="thumbnail"
-          src={thumbnail}
+          src={image}
         />
       </div>
       <div
@@ -111,7 +111,9 @@ function RoomCard({
           is_selected
         )}
       >
-        <span>{room.name}</span>
+        <span>{`${SELLING_TYPE_MATCHER[room.selling_type]} ${room.deposit}/${
+          room.monthly_rent
+        }`}</span>
       </div>
       {is_selected ? (
         <div
@@ -173,7 +175,6 @@ function AddCard({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        alignSelf: align,
         justifySelf: align,
       }}
     >
