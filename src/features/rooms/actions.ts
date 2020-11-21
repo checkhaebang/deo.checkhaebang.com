@@ -1,5 +1,5 @@
 import { createAction, createAsyncAction } from "typesafe-actions";
-import Room from "./models";
+import { Room } from "./models";
 
 export const setSelect = createAction("MENU/SET_SELECT")<number>();
 export const setMenuItems = createAction("MENU/SET_ITEMS")<Array<string>>();

@@ -1,7 +1,7 @@
 import React, { CSSProperties, ReactElement } from "react";
 
 import { AddCard, RoomCard } from "../components";
-import Room from "../models";
+import { Room } from "../models";
 
 const 방_리스트_style = (): CSSProperties => ({
   display: "flex",

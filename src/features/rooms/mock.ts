@@ -1,4 +1,4 @@
-import Room from "./models";
+import { Room } from "./models";
 
 export const rooms: Array<Room> = [
   {

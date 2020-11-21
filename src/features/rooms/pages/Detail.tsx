@@ -6,9 +6,9 @@ import { RouteComponentProps } from "react-router-dom";
 import { BasicLayout } from "~/layouts";
 import { color } from "~/colors";
 
-import Room from "../models";
+import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { loadRooms } from "../actions";
-import { RoomListView, DetailCard } from "../components";
+import { RoomListView, DetailCard, SummaryTable } from "../components";
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.rooms.isLoading,
@@ -67,7 +67,17 @@ class Detail extends Component<Props, State> {
               overflowY: "auto",
             }}
           >
-            <DetailCard room={select} />
+            <DetailCard
+              title={`${
+                select.selling_type in SELLING_TYPE_MATCHER
+                  ? SELLING_TYPE_MATCHER[select.selling_type]
+                  : ""
+              } ${select.deposit}${
+                select.monthly_rent ? "/" + select.monthly_rent : ""
+              }`}
+            >
+              <SummaryTable room={select} />
+            </DetailCard>
           </div>
         </div>
       </BasicLayout>

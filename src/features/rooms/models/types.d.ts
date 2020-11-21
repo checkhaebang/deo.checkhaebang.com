@@ -1,5 +1,5 @@
 declare module "RoomModels" {
-  export const ROOM_CONTENTS_LABEL = {
+  export const ROOM_CONTENTS_LABEL: { [index: string]: any } = {
     price: "가격",
     address: "주소",
     buildingType: "주거형태",
@@ -9,7 +9,7 @@ declare module "RoomModels" {
     administrationCost: "관리비",
   };
 
-  export const BUILDING_TYPE_MATHCER = {
+  export const BUILDING_TYPE_MATHCER: { [index: string]: any } = {
     OneRoom: "원룸",
     TwoRoom: "투룸",
     ThreeRoom: "쓰리룸",
@@ -18,7 +18,7 @@ declare module "RoomModels" {
     Villa: "빌라",
   };
 
-  export const SELLING_TYPE_MATCHER = {
+  export const SELLING_TYPE_MATCHER: { [index: string]: any } = {
     MonthlyRent: "월세",
     Jeonse: "전세",
     Selling: "매매",

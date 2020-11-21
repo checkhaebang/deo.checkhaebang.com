@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactElement } from "react";
 import { useHistory } from "react-router-dom";
-import Room, { SELLING_TYPE_MATCHER } from "../models";
+import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { img_no_thumbnail } from "~/assets";
 import { color } from "~/colors";
 type Props = {

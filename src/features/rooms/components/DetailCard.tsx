@@ -2,9 +2,15 @@ import React, { CSSProperties, ReactElement } from "react";
 
 import { color } from "~/colors";
 
-import Room, { BUILDING_TYPE_MATHCER, SELLING_TYPE_MATCHER } from "../models";
+import {
+  Room,
+  BUILDING_TYPE_MATHCER,
+  SELLING_TYPE_MATCHER,
+  ROOM_CONTENTS_LABEL,
+} from "../models";
+import { ChecklistView } from "~/features/checklist/components";
 
-const 디테일_카드_style = (): CSSProperties => ({
+const 상세보기_카드_style = (): CSSProperties => ({
   width: 312,
   height: 1000,
   backgroundColor: color.basicWhite,
@@ -12,7 +18,7 @@ const 디테일_카드_style = (): CSSProperties => ({
   marginTop: 16,
   padding: "0 24px 0 24px",
 });
-const 디테일_카드_타이틀_style = (): CSSProperties => ({
+const 상세보기_카드_타이틀_style = (): CSSProperties => ({
   fontSize: 26,
   fontWeight: "bold",
   fontStretch: "normal",
@@ -22,7 +28,7 @@ const 디테일_카드_타이틀_style = (): CSSProperties => ({
   color: color.grayscale29,
   margin: "28px 0 0 0",
 });
-const 디테일_카드_타이틀_언더바_style = (): CSSProperties => ({
+const 상세보기_카드_타이틀_언더바_style = (): CSSProperties => ({
   backgroundColor: color.primaryDullPurple,
   height: 2,
   width: 264,
@@ -30,44 +36,72 @@ const 디테일_카드_타이틀_언더바_style = (): CSSProperties => ({
 });
 
 type DetailCardProps = {
-  room: Room;
+  title: string;
+  children?: ReactElement;
 };
 
-export default function DetailCard({ room }: DetailCardProps): ReactElement {
-  const 유형_보증금 = `${SELLING_TYPE_MATCHER[room.selling_type]} ${
-    room.deposit
-  }`;
-  const 유형_보증금_월세 = `${SELLING_TYPE_MATCHER[room.selling_type]} ${
-    room.deposit
-  }/${room.monthly_rent}`;
+export default function DetailCard({
+  title,
+  children,
+}: DetailCardProps): ReactElement {
   return (
-    <div style={디테일_카드_style()}>
-      <p style={디테일_카드_타이틀_style()}>{유형_보증금}</p>
-      <div style={디테일_카드_타이틀_언더바_style()} />
-      <DatailCardRow label="가격" content={유형_보증금_월세} />
-      <DatailCardRow label="주소" content={room.address} />
-      <DatailCardRow
-        label="주거형태"
-        content={BUILDING_TYPE_MATHCER[room.building_type]}
-      />
-      <DatailCardRow
-        label="평형정보"
-        content={`${Math.round(room.room_size / 3.33)}평`}
-      />
-      <DatailCardRow label="층/건물층수" content={room.floor} />
-      <DatailCardRow
-        label="엘리베이터"
-        content={room.has_elevator ? "있음" : "없음"}
-      />
-      <DatailCardRow
-        label="관리비"
-        content={`${room.administrative_expenses}만 원`}
-      />
+    <div style={상세보기_카드_style()}>
+      <p style={상세보기_카드_타이틀_style()}>{title}</p>
+      <div style={상세보기_카드_타이틀_언더바_style()} />
+      {children}
     </div>
   );
 }
 
-const 디테일_카드_행_언더바_style = (): CSSProperties => ({
+type DetailCardTableProps = {
+  room: Room;
+};
+type RoomSummary = {
+  price: string;
+  address: string;
+  buildingType: string;
+  size: string;
+  floor: string;
+  elevator: string;
+  administrationCost: string;
+};
+export function SummaryTable({ room }: DetailCardTableProps): ReactElement {
+  const {
+    selling_type,
+    deposit,
+    monthly_rent,
+    address,
+    building_type,
+    room_size,
+    floor,
+    has_elevator,
+    administrative_expenses,
+  } = room;
+  const summary: RoomSummary = {
+    price: `${
+      selling_type in SELLING_TYPE_MATCHER
+        ? SELLING_TYPE_MATCHER[selling_type]
+        : ""
+    } ${deposit}${monthly_rent ? "/" + monthly_rent : ""}`,
+    address: address,
+    buildingType: BUILDING_TYPE_MATHCER[building_type],
+    size: `${Math.round(room_size / 3.33)}평`,
+    floor: floor,
+    elevator: has_elevator ? "있음" : "없음",
+    administrationCost: `${administrative_expenses}만 원`,
+  };
+
+  return (
+    <>
+      {Object.entries(ROOM_CONTENTS_LABEL).map(([key, label]) => (
+        <SummaryRow label={label} content={summary[key as keyof RoomSummary]} />
+      ))}
+      <ChecklistView />
+    </>
+  );
+}
+
+const 밑줄_style = (): CSSProperties => ({
   width: 264,
   height: 1,
   backgroundColor: color.grayscalef9,
@@ -76,7 +110,7 @@ type DetailCardRowProps = {
   label: string;
   content: string;
 };
-function DatailCardRow({ label, content }: DetailCardRowProps): ReactElement {
+function SummaryRow({ label, content }: DetailCardRowProps): ReactElement {
   return (
     <div>
       <div
@@ -119,7 +153,7 @@ function DatailCardRow({ label, content }: DetailCardRowProps): ReactElement {
           {content}
         </span>
       </div>
-      <div style={디테일_카드_행_언더바_style()} />
+      <div style={밑줄_style()} />
     </div>
   );
 }
