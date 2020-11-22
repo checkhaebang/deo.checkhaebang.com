@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.6.0...v1.7.0) (2020-11-22)
+
+
+### Features
+
+* **room/summary:** room summary ui 구현([#21](https://github.com/checkhaebang/deo.checkhaebang.com/issues/21)) ([f459bb7](https://github.com/checkhaebang/deo.checkhaebang.com/commit/f459bb79232a96b082cf35cfd61f43858f97ad3f))
+
 ## [1.6.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.5.0...v1.6.0) (2020-11-10)
 
 
