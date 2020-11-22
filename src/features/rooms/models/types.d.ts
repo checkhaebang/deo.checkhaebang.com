@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module "RoomModels" {
   export const ROOM_CONTENTS_LABEL: { [index: string]: any } = {
     price: "가격",

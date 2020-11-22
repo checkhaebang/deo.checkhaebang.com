@@ -8,17 +8,22 @@ import { color } from "~/colors";
 
 import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { loadRooms } from "../actions";
+import { loadChecklist } from "~/features/checklist/actions";
 import { RoomListView, DetailCard, SummaryTable } from "../components";
+import { ChecklistView } from "~/features/checklist/components";
 
 const mapStateToProps = (state: RootState) => ({
-  isLoading: state.rooms.isLoading,
+  isRoomsLoading: state.rooms.isLoading,
+  isChecklistLoading: state.checklist.isLoading,
   rooms: state.rooms.rooms,
+  questions: state.checklist.questions,
 });
 type MatchProps = {
   id: string;
 };
 const dispatchProps = {
   fetchRooms: loadRooms.request,
+  fetchChecklist: loadChecklist.request,
 };
 
 type Props = ReturnType<typeof mapStateToProps> &
@@ -31,20 +36,23 @@ type State = {
 class Detail extends Component<Props, State> {
   componentDidMount() {
     this.props.fetchRooms();
+    this.props.fetchChecklist();
   }
 
   render(): ReactElement {
     const {
       match: { params },
-      isLoading,
+      isRoomsLoading,
+      isChecklistLoading,
       rooms,
+      questions,
     }: Props = this.props;
     const select = rooms.filter((room) => room.uid === params.id)[0];
     const width = 56;
     const height = 56;
     const margin = "0 8px 0 0";
 
-    return isLoading ? (
+    return isRoomsLoading || isChecklistLoading ? (
       <>Loading..</>
     ) : (
       <BasicLayout
@@ -76,7 +84,10 @@ class Detail extends Component<Props, State> {
                 select.monthly_rent ? "/" + select.monthly_rent : ""
               }`}
             >
-              <SummaryTable room={select} />
+              <>
+                <SummaryTable room={select} />
+                <ChecklistView questions={questions} />
+              </>
             </DetailCard>
           </div>
         </div>

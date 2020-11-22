@@ -8,7 +8,6 @@ import {
   SELLING_TYPE_MATCHER,
   ROOM_CONTENTS_LABEL,
 } from "../models";
-import { ChecklistView } from "~/features/checklist/components";
 
 const 상세보기_카드_style = (): CSSProperties => ({
   width: 312,
@@ -96,7 +95,6 @@ export function SummaryTable({ room }: DetailCardTableProps): ReactElement {
       {Object.entries(ROOM_CONTENTS_LABEL).map(([key, label]) => (
         <SummaryRow label={label} content={summary[key as keyof RoomSummary]} />
       ))}
-      <ChecklistView />
     </>
   );
 }
