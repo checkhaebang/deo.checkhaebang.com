@@ -8,6 +8,7 @@ import { BasicLayout, TitleBarProps } from "~/layouts";
 import { DropDown, RoomCard, AddCard } from "../components";
 import Crawling from "./Crawling";
 import Add from "./Add";
+import Detail from "./Detail";
 
 import { loadRooms } from "../actions";
 
@@ -32,7 +33,13 @@ class Rooms extends React.Component<Props> {
   render(): ReactElement {
     const { isLoading, rooms, menu }: Props = this.props;
     const { select, items, is_open } = menu;
-    return (
+    const width = 148;
+    const height = 148;
+    const plusSize = 56;
+    const margin = "0 0 0 0";
+    return isLoading ? (
+      <>Loading..</>
+    ) : (
       <BasicLayout titleBarProps={this.타이틀바_props()}>
         <div style={this.컨테이너_style()}>
           <MenuSection items={items} is_open={is_open} select={select} />
@@ -46,12 +53,24 @@ class Rooms extends React.Component<Props> {
               overflow: "scroll",
             }}
           >
-            <AddCard />
-            {isLoading ? (
-              <>Loading..</>
-            ) : (
-              rooms.map((room) => <RoomCard room={room} />)
-            )}
+            {rooms.map((room) => (
+              <RoomCard
+                key={room.uid}
+                room={room}
+                height={height}
+                width={width}
+                margin={margin}
+                label_overlay={false}
+                is_selected={false}
+              />
+            ))}
+            <AddCard
+              align="center"
+              margin={margin}
+              height={height}
+              width={width}
+              plusSize={plusSize}
+            />
           </div>
         </div>
       </BasicLayout>
@@ -116,6 +135,6 @@ class MenuSection extends React.Component<MenuSectionProps> {
   }
 }
 
-export { Crawling, Add };
+export { Crawling, Add, Detail };
 
 export default connect(mapStateToProps, dispatchProps)(Rooms);
