@@ -6,14 +6,14 @@ import { Redirect } from "react-router-dom";
 
 import { color } from "~/colors";
 import creating from "~/assets/creating";
-import { loadChecklistAsync } from "../actions";
+import { loadChecklist } from "../actions";
 import { CheckQuestion } from "../models";
 
 const mapStateToProps = (state: RootState) => ({
   isLoading: state.checklist.isLoading,
 });
 const dispatchProps = {
-  fetchChecklists: loadChecklistAsync.request,
+  fetchChecklists: loadChecklist.request,
 };
 
 type Props = ReturnType<typeof mapStateToProps> & typeof dispatchProps;

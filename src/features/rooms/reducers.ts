@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import { createReducer } from "typesafe-actions";
 import { setSelect, setMenuItems, setMenuOpen } from "./actions";
 import { loadRooms } from "./actions";
-import Room from "./models";
+import { Room } from "./models";
 
 export const isLoading = createReducer(true as boolean)
   .handleAction([loadRooms.request], () => true)

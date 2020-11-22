@@ -1,5 +1,6 @@
 import { CheckQuestion } from "./models";
 import { ChecklistState } from "./reducers";
 
-export const getChecklist = (state: ChecklistState): Array<CheckQuestion> =>
-  state.checklist;
+export const getChecklistQuestions = (
+  state: ChecklistState
+): Array<CheckQuestion> => state.questions;

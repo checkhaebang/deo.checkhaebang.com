@@ -3,7 +3,7 @@ import { from, of } from "rxjs";
 import { filter, switchMap, map, catchError } from "rxjs/operators";
 import { RootAction, RootState, Services, isActionOf } from "typesafe-actions";
 
-import { loadChecklistAsync } from "./actions";
+import { loadChecklist } from "./actions";
 
 export const loadChecklistEpic: Epic<
   RootAction,
@@ -12,11 +12,11 @@ export const loadChecklistEpic: Epic<
   Services
 > = (action$, state$, { api }) =>
   action$.pipe(
-    filter(isActionOf(loadChecklistAsync.request)),
+    filter(isActionOf(loadChecklist.request)),
     switchMap(() =>
       from(api.checklist.fetchCheckQuestions()).pipe(
-        map(loadChecklistAsync.success),
-        catchError((message: string) => of(loadChecklistAsync.failure(message)))
+        map(loadChecklist.success),
+        catchError((message: string) => of(loadChecklist.failure(message)))
       )
     )
   );
