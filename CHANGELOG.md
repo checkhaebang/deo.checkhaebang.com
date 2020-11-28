@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.7.0...v1.8.0) (2020-11-28)
+
+
+### Features
+
+* **looking-checklist:** 방 구하는 중 체크리스트 UI, 방 삭제 Modal 구현 ([#22](https://github.com/checkhaebang/deo.checkhaebang.com/issues/22)) ([382c742](https://github.com/checkhaebang/deo.checkhaebang.com/commit/382c74235c473bf6dd1ee3d3819ddd90cf64b308))
+
 ## [1.7.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.6.0...v1.7.0) (2020-11-22)
 
 
