@@ -111,9 +111,9 @@ function RoomCard({
           is_selected
         )}
       >
-        <span>{`${SELLING_TYPE_MATCHER[room.selling_type]} ${room.deposit}/${
-          room.monthly_rent
-        }`}</span>
+        <span style={{ lineHeight: 1.41 }}>{`${
+          SELLING_TYPE_MATCHER[room.selling_type]
+        } ${room.deposit}/${room.monthly_rent}`}</span>
       </div>
       {is_selected ? (
         <div
@@ -126,7 +126,14 @@ function RoomCard({
           }}
         />
       ) : (
-        <></>
+        <div
+          style={{
+            width: width,
+            height: 5,
+            borderRadius: 2.5,
+            marginTop: 3,
+          }}
+        />
       )}
     </div>
   );
