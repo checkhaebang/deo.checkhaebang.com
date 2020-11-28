@@ -10,12 +10,13 @@ import {
 } from "../models";
 
 const 상세보기_카드_style = (): CSSProperties => ({
+  height: "fit-content",
   width: 312,
-  height: 1000,
   backgroundColor: color.basicWhite,
   borderRadius: 6,
   marginTop: 16,
-  padding: "0 24px 0 24px",
+  marginBottom: 8,
+  padding: "0 24px 29px 24px",
 });
 const 상세보기_카드_타이틀_style = (): CSSProperties => ({
   fontSize: 26,
@@ -93,7 +94,11 @@ export function SummaryTable({ room }: DetailCardTableProps): ReactElement {
   return (
     <>
       {Object.entries(ROOM_CONTENTS_LABEL).map(([key, label]) => (
-        <SummaryRow label={label} content={summary[key as keyof RoomSummary]} />
+        <SummaryRow
+          key={key}
+          label={label}
+          content={summary[key as keyof RoomSummary]}
+        />
       ))}
     </>
   );
