@@ -11,7 +11,7 @@ import React, { CSSProperties, ReactElement, useState } from "react";
 
 import { CheckQuestion } from "../models";
 import { groupBy } from "../utils";
-import { ic_open, box_unchecked } from "~/assets";
+import { ic_open } from "~/assets";
 import { color } from "~/colors";
 
 import CheckBox from "./CheckBox";
