@@ -9,7 +9,12 @@ import { color } from "~/colors";
 import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { loadRooms } from "../actions";
 import { loadChecklist } from "~/features/checklist/actions";
-import { RoomListView, DetailCard, SummaryTable } from "../components";
+import {
+  RoomListView,
+  DetailCard,
+  SummaryTable,
+  DeleteModal,
+} from "../components";
 import { ChecklistView } from "~/features/checklist/components";
 
 const mapStateToProps = (state: RootState) => ({
@@ -31,9 +36,15 @@ type Props = ReturnType<typeof mapStateToProps> &
   RouteComponentProps<MatchProps>;
 
 type State = {
-  room: Room;
+  room?: Room;
+  visible: boolean;
 };
 class Detail extends Component<Props, State> {
+  private ref = React.createRef<HTMLDivElement>();
+  constructor(props: Props) {
+    super(props);
+    this.state = { visible: false };
+  }
   componentDidMount() {
     this.props.fetchRooms();
     this.props.fetchChecklist();
@@ -47,10 +58,21 @@ class Detail extends Component<Props, State> {
       rooms,
       questions,
     }: Props = this.props;
+
     const select = rooms.filter((room) => room.uid === params.id)[0];
     const width = 56;
     const height = 56;
     const margin = "0 8px 0 0";
+
+    const title = select
+      ? `${
+          select.selling_type in SELLING_TYPE_MATCHER
+            ? SELLING_TYPE_MATCHER[select.selling_type]
+            : ""
+        } ${select.deposit}${
+          select.monthly_rent ? "/" + select.monthly_rent : ""
+        }`
+      : "";
 
     return isRoomsLoading || isChecklistLoading ? (
       <>Loading..</>
@@ -66,30 +88,27 @@ class Detail extends Component<Props, State> {
             select={select}
             rooms={rooms}
           />
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              height: 549,
-              backgroundColor: color.primaryDeepDarkBlue,
-              overflowY: "auto",
-            }}
-          >
-            <DetailCard
-              title={`${
-                select.selling_type in SELLING_TYPE_MATCHER
-                  ? SELLING_TYPE_MATCHER[select.selling_type]
-                  : ""
-              } ${select.deposit}${
-                select.monthly_rent ? "/" + select.monthly_rent : ""
-              }`}
-            >
+          <div style={this.방_상세정보_wrapper_style()}>
+            <DetailCard title={title}>
               <>
                 <SummaryTable room={select} />
                 <ChecklistView questions={questions} />
               </>
             </DetailCard>
+            <DeleteButton
+              setVisible={(visible: boolean) =>
+                this.setState({ visible: visible })
+              }
+            />
           </div>
+          <DeleteModal
+            room_price={title}
+            ref={this.ref}
+            visible={this.state.visible}
+            setVisible={(visible: boolean) => {
+              this.setState({ visible: visible });
+            }}
+          />
         </div>
       </BasicLayout>
     );
@@ -101,6 +120,47 @@ class Detail extends Component<Props, State> {
     overflowX: "auto",
     flexWrap: "nowrap",
   });
+  방_상세정보_wrapper_style = (): CSSProperties => ({
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    height: 549,
+    backgroundColor: color.primaryDeepDarkBlue,
+    overflowY: "auto",
+    paddingBottom: 40,
+  });
+}
+
+const 방_삭제하기_버튼_style = (): CSSProperties => ({
+  width: 310,
+  height: 51,
+  background: color.grayscalec9,
+  borderRadius: 6,
+});
+const 방_삭제하기_버튼_텍스트_style = (): CSSProperties => ({
+  height: 51,
+  lineHeight: "51px",
+  display: "flex",
+  justifyContent: "center",
+  cursor: "pointer",
+  fontWeight: "bold",
+  color: color.primaryDeepDarkBlue,
+});
+
+type DeleteButtonProps = {
+  setVisible: (visible: boolean) => void;
+};
+function DeleteButton({ setVisible }: DeleteButtonProps): ReactElement {
+  return (
+    <div style={방_삭제하기_버튼_style()}>
+      <span
+        style={방_삭제하기_버튼_텍스트_style()}
+        onClick={() => setVisible(true)}
+      >
+        방 삭제하기
+      </span>
+    </div>
+  );
 }
 
 export default connect(mapStateToProps, dispatchProps)(Detail);

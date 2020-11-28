@@ -5,10 +5,12 @@ import { Room } from "../models";
 
 const 방_리스트_style = (): CSSProperties => ({
   display: "flex",
+  alignItems: "center",
   margin: "0 0 0 24px",
   height: 80,
   overflowX: "auto",
   flexWrap: "nowrap",
+  zIndex: 1001,
 });
 
 type RoomListViewProps = {
@@ -57,7 +59,7 @@ export default function RoomListView({
         width={width}
         height={height}
         plusSize={30}
-        margin={margin}
+        margin={"0 8px 8px 0"}
       />
     </div>
   );

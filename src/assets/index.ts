@@ -13,6 +13,9 @@ import title_logo_black from "./title-logo-black.svg";
 import title_logo_gray from "./title-logo-gray.svg";
 import ic_human from "./human-normal.svg";
 import img_no_thumbnail from "./no-image-room.svg";
+import ic_open from "./navigation-open-down.svg";
+import box_unchecked from "./unchecked-box.svg";
+import box_checked from "./checked-box.svg";
 
 const persona = [persona1, persona2, persona3, persona4, persona5, persona6];
 export {
@@ -26,4 +29,7 @@ export {
   title_logo_gray,
   ic_human,
   img_no_thumbnail,
+  ic_open,
+  box_unchecked,
+  box_checked,
 };
