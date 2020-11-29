@@ -43,9 +43,6 @@ jobs:
           VERSION=$(npm run version:next | tail -1)
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
           RELEASE_DESCRIPTION=$DESCRIPTION
-          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//'%'/'%25'}"
-          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\n'/'%0A'}"
-          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\r'/'%0D'}"
 
           SLACK_DESCRIPTION=$DESCRIPTION
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//'%'/%}"
