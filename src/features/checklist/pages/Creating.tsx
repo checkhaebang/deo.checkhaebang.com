@@ -1,3 +1,6 @@
+/**
+ * /checklist/creating 체크리스트 생성 중 화면
+ */
 import React, { CSSProperties } from "react";
 import Lottie from "react-lottie";
 import { connect } from "react-redux";

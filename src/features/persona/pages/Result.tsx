@@ -1,3 +1,6 @@
+/**
+ * /persona/analyzing 페르소나 분석결과 화면
+ */
 import React, { CSSProperties, ReactElement } from "react";
 import { persona, facebookIcon, kakaoIcon, urlIcon } from "~/assets";
 import reactStringReplace from "react-string-replace";

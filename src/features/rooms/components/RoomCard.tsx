@@ -1,3 +1,6 @@
+/**
+ * /rooms 에 나오는 방 리스트를 카드로 보여주기 위한 컴포넌트
+ */
 import React, { CSSProperties, ReactElement } from "react";
 import { useHistory } from "react-router-dom";
 import { Room, SELLING_TYPE_MATCHER } from "../models";

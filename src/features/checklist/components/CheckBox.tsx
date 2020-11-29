@@ -2,7 +2,7 @@ import React, { ReactElement, useState } from "react";
 import { box_unchecked, box_checked } from "~/assets";
 
 type Props = {
-  uid: number;
+  uid: string;
   label?: string;
 };
 export default function CheckBox({ uid, label = "" }: Props): ReactElement {

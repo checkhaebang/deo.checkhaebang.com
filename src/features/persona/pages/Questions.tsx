@@ -1,3 +1,6 @@
+/**
+ * /persona/questions 페르소나 질문 화면
+ */
 import React, { CSSProperties } from "react";
 import { RootState } from "typesafe-actions";
 import { connect } from "react-redux";

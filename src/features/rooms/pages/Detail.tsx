@@ -1,3 +1,6 @@
+/**
+ * /rooms/{room.uid} 의 화면
+ */
 import React, { Component, CSSProperties, ReactElement } from "react";
 import { RootState } from "typesafe-actions";
 import { connect } from "react-redux";
@@ -90,10 +93,8 @@ class Detail extends Component<Props, State> {
           />
           <div style={this.방_상세정보_wrapper_style()}>
             <DetailCard title={title}>
-              <>
-                <SummaryTable room={select} />
-                <ChecklistView questions={questions} />
-              </>
+              <SummaryTable room={select} />
+              <ChecklistView questions={questions} room_id={select.uid || ""} />
             </DetailCard>
             <DeleteButton
               setVisible={(visible: boolean) =>
@@ -124,7 +125,7 @@ class Detail extends Component<Props, State> {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height: 549,
+    height: 509,
     backgroundColor: color.primaryDeepDarkBlue,
     overflowY: "auto",
     paddingBottom: 40,

@@ -1,3 +1,6 @@
+/**
+ * /rooms/{room.uid}에서 선택된 방의 indicator
+ */
 import React, { ReactElement } from "react";
 import { color } from "~/colors";
 

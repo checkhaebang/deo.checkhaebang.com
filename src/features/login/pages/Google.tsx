@@ -1,3 +1,6 @@
+/**
+ * /login/google 구글 로그인 화면
+ */
 import React, { CSSProperties, ReactElement } from "react";
 import Lottie from "react-lottie";
 import { useHistory } from "react-router-dom";
