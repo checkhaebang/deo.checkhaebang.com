@@ -28,39 +28,26 @@ export default function RoomListView({
   select,
   rooms,
 }: RoomListViewProps): ReactElement {
-  return (
-    <div style={방_리스트_style()}>
-      {
-        <RoomCard
-          key={select.uid}
-          room={select}
-          width={width}
-          height={height}
-          margin={margin}
-          label_overlay={true}
-          is_selected={true}
-        />
-      }
-      {rooms
-        .filter((room) => room.uid !== select.uid)
-        .map((room) => (
-          <RoomCard
-            key={room.uid}
-            room={room}
-            width={width}
-            height={height}
-            margin={margin}
-            label_overlay={true}
-            is_selected={false}
-          />
-        ))}
-      <AddCard
-        align="start"
-        width={width}
-        height={height}
-        plusSize={30}
-        margin={"0 8px 8px 0"}
-      />
-    </div>
+  const cards = rooms.map((room) => (
+    <RoomCard
+      key={room.uid}
+      room={room}
+      width={width}
+      height={height}
+      margin={margin}
+      label_overlay={true}
+      is_selected={room.uid === select.uid}
+    />
+  ));
+  cards.push(
+    <AddCard
+      key="add-card"
+      align="start"
+      width={width}
+      height={height}
+      plusSize={30}
+      margin={"0 8px 8px 0"}
+    />
   );
+  return <div style={방_리스트_style()}>{cards}</div>;
 }

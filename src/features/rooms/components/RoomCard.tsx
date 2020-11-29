@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { img_no_thumbnail } from "~/assets";
 import { color } from "~/colors";
+import RoomCardIndicator from "./RoomCardIndicator";
 type Props = {
   room: Room;
   is_selected: boolean;
@@ -22,7 +23,6 @@ const 카드_style = ({ margin }: ThumbnailProps): CSSProperties => ({
   cursor: "pointer",
   margin: margin,
 });
-
 const 카드_썸네일_style = ({
   width,
   height,
@@ -115,26 +115,13 @@ function RoomCard({
           SELLING_TYPE_MATCHER[room.selling_type]
         } ${room.deposit}/${room.monthly_rent}`}</span>
       </div>
-      {is_selected ? (
-        <div
-          style={{
-            backgroundColor: color.primaryYellow,
-            width: width,
-            height: 5,
-            borderRadius: 2.5,
-            marginTop: 3,
-          }}
-        />
-      ) : (
-        <div
-          style={{
-            width: width,
-            height: 5,
-            borderRadius: 2.5,
-            marginTop: 3,
-          }}
-        />
-      )}
+      <RoomCardIndicator
+        visible={is_selected}
+        width={width}
+        height={5}
+        borderRadius={2.5}
+        marginTop={3}
+      />
     </div>
   );
 }
