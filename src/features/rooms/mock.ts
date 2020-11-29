@@ -55,4 +55,58 @@ export const rooms: Array<Room> = [
     uid: "Dabang::5f44bb5d84a8ba3480ea966f",
     user_id: 1,
   },
+  {
+    deposit: 500,
+    monthly_rent: 42,
+    selling_type: "MonthlyRent",
+    address: "서울특별시 동작구 노량진동",
+    title: "위치 좋고 깔끔한 아늑한 방",
+    description:
+      "-위치 좋고 깔끔한 아늑한 방이에요\n-40만원대는 지상층방이 많지는 않아요\n-가격대비 방이 공간활용도 잘되어 있고 너무 좋아요.\n-1층이어도 살짝 높은 1층 입니다.\n-보증금500만원 월42만원 관리3만원\n-저희 사무소는 광고중인 매물 외에도 전월세 다양하게 보유하고 있어요\n-일단 원하시는 조건등을 가지고 상담하세요 다양하게 방 보여드릴 수 있습니다.\n-언제든지 방문해주세요.",
+    image:
+      "http://d1774jszgerdmk.cloudfront.net/512/c0ca363e-bfe9-4e53-9ec2-48f3034f1979",
+    building_type: "OneRoom",
+    room_size: 11.0,
+    floor: "1층/2층",
+    has_elevator: false,
+    administrative_expenses: 3,
+    uid: "Dabang::mockingmocing",
+    user_id: 1,
+  },
+  {
+    deposit: 500,
+    monthly_rent: 42,
+    selling_type: "MonthlyRent",
+    address: "서울특별시 동작구 노량진동",
+    title: "위치 좋고 깔끔한 아늑한 방",
+    description:
+      "-위치 좋고 깔끔한 아늑한 방이에요\n-40만원대는 지상층방이 많지는 않아요\n-가격대비 방이 공간활용도 잘되어 있고 너무 좋아요.\n-1층이어도 살짝 높은 1층 입니다.\n-보증금500만원 월42만원 관리3만원\n-저희 사무소는 광고중인 매물 외에도 전월세 다양하게 보유하고 있어요\n-일단 원하시는 조건등을 가지고 상담하세요 다양하게 방 보여드릴 수 있습니다.\n-언제든지 방문해주세요.",
+    image:
+      "http://d1774jszgerdmk.cloudfront.net/512/c0ca363e-bfe9-4e53-9ec2-48f3034f1979",
+    building_type: "OneRoom",
+    room_size: 11.0,
+    floor: "1층/2층",
+    has_elevator: false,
+    administrative_expenses: 3,
+    uid: "Dabang::mock2",
+    user_id: 1,
+  },
+  {
+    deposit: 500,
+    monthly_rent: 42,
+    selling_type: "MonthlyRent",
+    address: "서울특별시 동작구 노량진동",
+    title: "위치 좋고 깔끔한 아늑한 방",
+    description:
+      "-위치 좋고 깔끔한 아늑한 방이에요\n-40만원대는 지상층방이 많지는 않아요\n-가격대비 방이 공간활용도 잘되어 있고 너무 좋아요.\n-1층이어도 살짝 높은 1층 입니다.\n-보증금500만원 월42만원 관리3만원\n-저희 사무소는 광고중인 매물 외에도 전월세 다양하게 보유하고 있어요\n-일단 원하시는 조건등을 가지고 상담하세요 다양하게 방 보여드릴 수 있습니다.\n-언제든지 방문해주세요.",
+    image:
+      "http://d1774jszgerdmk.cloudfront.net/512/c0ca363e-bfe9-4e53-9ec2-48f3034f1979",
+    building_type: "OneRoom",
+    room_size: 11.0,
+    floor: "1층/2층",
+    has_elevator: false,
+    administrative_expenses: 3,
+    uid: "Dabang::mock3",
+    user_id: 1,
+  },
 ];
