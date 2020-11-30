@@ -2,12 +2,15 @@
  * /rooms 에 나오는 방 리스트를 카드로 보여주기 위한 컴포넌트
  */
 import React, { CSSProperties, ReactElement } from "react";
+import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { img_no_thumbnail } from "~/assets";
 import { color } from "~/colors";
 import RoomCardIndicator from "./RoomCardIndicator";
-type Props = {
+import { postAnswers } from "~/features/checklist/actions";
+
+type RoomProps = {
   room: Room;
   is_selected: boolean;
 };
@@ -18,6 +21,12 @@ type ThumbnailProps = {
   margin: string;
   label_overlay: boolean;
 };
+
+const dispatchProps = {
+  saveAnswers: postAnswers.request,
+};
+
+type Props = typeof dispatchProps & ThumbnailProps & RoomProps;
 
 const 카드_style = ({ margin }: ThumbnailProps): CSSProperties => ({
   display: "flex",
@@ -79,7 +88,8 @@ function RoomCard({
   margin,
   label_overlay,
   is_selected,
-}: Props & ThumbnailProps): ReactElement {
+  saveAnswers,
+}: Props): ReactElement {
   const history = useHistory();
   const image = room.image || img_no_thumbnail;
 
@@ -98,7 +108,10 @@ function RoomCard({
   return (
     <div
       style={카드_style(thumbnail_wrap_props)}
-      onClick={() => history.push(`/rooms/${room.uid}`)}
+      onClick={() => {
+        saveAnswers();
+        history.push(`/rooms/${room.uid}`);
+      }}
     >
       <div style={카드_썸네일_style(thumbnail_wrap_props)}>
         <img
@@ -185,4 +198,4 @@ function AddCard({
   );
 }
 export { AddCard };
-export default RoomCard;
+export default connect(null, dispatchProps)(RoomCard);
