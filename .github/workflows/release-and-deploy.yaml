@@ -42,7 +42,9 @@ jobs:
           git config --local user.name "GitHub Action"
           VERSION=$(npm run version:next | tail -1)
           DESCRIPTION=$(npx standard-version --dry-run --silent | grep -v Done | grep -v "\-\-\-" | grep -v standard-version)
-          RELEASE_DESCRIPTION=$DESCRIPTION
+          RELEASE_DESCRIPTION="${DESCRIPTION//'%'/%}"
+          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\n'/\\n}"
+          RELEASE_DESCRIPTION="${RELEASE_DESCRIPTION//$'\r'/\\n}"
 
           SLACK_DESCRIPTION=$DESCRIPTION
           SLACK_DESCRIPTION="${SLACK_DESCRIPTION//'%'/%}"
