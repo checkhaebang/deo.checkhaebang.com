@@ -1,5 +1,9 @@
 html {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100%;
+  width: 100%;
 }
 @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
 * {
@@ -25,7 +29,7 @@ a {
 }
 
 #root {
-  width: 100%;
+  width: 360px;
   display: flex;
   justify-content: center;
   max-width: 360px;

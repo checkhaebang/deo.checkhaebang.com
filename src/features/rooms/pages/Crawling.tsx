@@ -1,3 +1,6 @@
+/**
+ * /rooms/crawling 의 화면
+ */
 import React, { CSSProperties, ReactElement } from "react";
 import { BasicLayout } from "~/layouts";
 import { color } from "~/colors";

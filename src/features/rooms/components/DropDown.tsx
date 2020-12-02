@@ -1,3 +1,6 @@
+/**
+ * /rooms 에서 보여줄 정보의 카테고리를 선택하는 드롭다운
+ */
 import React, { ReactElement, CSSProperties, useEffect, useRef } from "react";
 import { setSelect, setMenuOpen } from "../actions";
 import { useDispatch } from "react-redux";

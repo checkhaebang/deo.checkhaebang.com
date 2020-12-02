@@ -1,3 +1,6 @@
+/**
+ * /rooms/{room.uid}의 화면 상단에 나오는 방 리스트
+ */
 import React, { CSSProperties, ReactElement } from "react";
 
 import { AddCard, RoomCard } from "../components";

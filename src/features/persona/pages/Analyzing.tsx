@@ -1,3 +1,6 @@
+/**
+ * /persona/analyzing 페르소나 결과 분석 중 화면
+ */
 import React, { CSSProperties, ReactElement } from "react";
 import Lottie from "react-lottie";
 import { RootState } from "typesafe-actions";

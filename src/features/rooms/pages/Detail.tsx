@@ -1,3 +1,6 @@
+/**
+ * /rooms/{room.uid} 의 화면
+ */
 import React, { Component, CSSProperties, ReactElement } from "react";
 import { RootState } from "typesafe-actions";
 import { connect } from "react-redux";
@@ -8,7 +11,11 @@ import { color } from "~/colors";
 
 import { Room, SELLING_TYPE_MATCHER } from "../models";
 import { loadRooms } from "../actions";
-import { loadChecklist } from "~/features/checklist/actions";
+import {
+  loadChecklist,
+  loadAnswers,
+  postAnswers,
+} from "~/features/checklist/actions";
 import {
   RoomListView,
   DetailCard,
@@ -22,6 +29,7 @@ const mapStateToProps = (state: RootState) => ({
   isChecklistLoading: state.checklist.isLoading,
   rooms: state.rooms.rooms,
   questions: state.checklist.questions,
+  answers: state.checklist.answers,
 });
 type MatchProps = {
   id: string;
@@ -29,6 +37,8 @@ type MatchProps = {
 const dispatchProps = {
   fetchRooms: loadRooms.request,
   fetchChecklist: loadChecklist.request,
+  fetchAnswers: loadAnswers.request,
+  saveAnswers: postAnswers.request,
 };
 
 type Props = ReturnType<typeof mapStateToProps> &
@@ -43,11 +53,16 @@ class Detail extends Component<Props, State> {
   private ref = React.createRef<HTMLDivElement>();
   constructor(props: Props) {
     super(props);
-    this.state = { visible: false };
+    this.state = {
+      visible: false,
+    };
   }
   componentDidMount() {
     this.props.fetchRooms();
     this.props.fetchChecklist();
+  }
+  componentWillUnmount() {
+    this.props.saveAnswers();
   }
 
   render(): ReactElement {
@@ -90,10 +105,8 @@ class Detail extends Component<Props, State> {
           />
           <div style={this.방_상세정보_wrapper_style()}>
             <DetailCard title={title}>
-              <>
-                <SummaryTable room={select} />
-                <ChecklistView questions={questions} />
-              </>
+              <SummaryTable room={select} />
+              <ChecklistView questions={questions} room_id={select.uid || ""} />
             </DetailCard>
             <DeleteButton
               setVisible={(visible: boolean) =>
@@ -113,6 +126,7 @@ class Detail extends Component<Props, State> {
       </BasicLayout>
     );
   }
+
   방_리스트_style = (): CSSProperties => ({
     display: "flex",
     margin: "0 24px 0 24px",
@@ -124,7 +138,7 @@ class Detail extends Component<Props, State> {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    height: 549,
+    height: 509,
     backgroundColor: color.primaryDeepDarkBlue,
     overflowY: "auto",
     paddingBottom: 40,
