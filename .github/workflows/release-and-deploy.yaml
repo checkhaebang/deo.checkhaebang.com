@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v1
       - name: Install Dependencies
-        run: npm install
+        run: npm ci --only=production
       - name: Build
         run: npm run build
       - name: Archive production artifact
@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v1
       - name: Install dependencies
-        run: npm install
+        run: npm ci --only=production
       - name: Versioning & Create changelog
         run: |
           git config --local user.email "action@github.com"
