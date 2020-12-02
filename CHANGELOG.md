@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.8.1...v1.9.0) (2020-12-02)
+
+
+### Features
+
+* **checklist:** 체크리스트 체크항목 리덕스 처리 ([#24](https://github.com/checkhaebang/deo.checkhaebang.com/issues/24)) ([b04f032](https://github.com/checkhaebang/deo.checkhaebang.com/commit/b04f0329e94cf2f60b84f9038fe2c58f3c22f75a))
+
 ### [1.8.1](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.8.0...v1.8.1) (2020-11-29)
 
 ## [1.8.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.7.0...v1.8.0) (2020-11-28)
