@@ -1,3 +1,7 @@
+/**
+ * /rooms/{room.uid} 방 상세보기의 상세정보 화면을 위한 컴포넌트
+ * 방의 개요와 체크리스트를 함께 보여준다
+ */
 import React, { CSSProperties, ReactElement } from "react";
 
 import { color } from "~/colors";
@@ -37,7 +41,7 @@ const 상세보기_카드_타이틀_언더바_style = (): CSSProperties => ({
 
 type DetailCardProps = {
   title: string;
-  children?: ReactElement;
+  children?: ReactElement[];
 };
 
 export default function DetailCard({

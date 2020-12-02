@@ -38,10 +38,12 @@ const 콘텐츠_style = (expand: boolean): CSSProperties => ({
 type ItemProps = {
   label: string;
   questions: Array<CheckQuestion>;
+  room_id: string;
 };
 export default function QuestionPanel({
   label,
   questions,
+  room_id,
 }: ItemProps): ReactElement {
   const [expand, setExpand] = useState(false);
   return (
@@ -49,8 +51,8 @@ export default function QuestionPanel({
       <QuestionPanelHeader label={label} expand={expand} click={setExpand} />
       <div style={밑줄_style()} />
       <div style={콘텐츠_style(expand)}>
-        {questions.map((question) => (
-          <QuestionItem key={question.uid} question={question} />
+        {questions.map((question, index) => (
+          <QuestionItem key={index} question={question} room_id={room_id} />
         ))}
       </div>
     </>

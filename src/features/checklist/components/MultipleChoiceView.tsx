@@ -6,6 +6,7 @@ import CheckBox from "./CheckBox";
 
 type MultipleChoiceViewProps = {
   checks: Array<CheckItem>;
+  room_id: string;
 };
 const 행_style = (): CSSProperties => ({
   display: "grid",
@@ -16,12 +17,14 @@ const 행_style = (): CSSProperties => ({
 });
 export default function MultipleChoiceView({
   checks,
+  room_id,
 }: MultipleChoiceViewProps): ReactElement {
   return (
     <div style={행_style()}>
-      {checks?.map((check) => (
-        <CheckBox key={check.uid} uid={check.uid} label={check.contents} />
-      ))}
+      {checks?.map((check) => {
+        const uid = `${room_id}::${check.uid}`;
+        return <CheckBox key={uid} uid={uid} label={check.contents} />;
+      })}
     </div>
   );
 }

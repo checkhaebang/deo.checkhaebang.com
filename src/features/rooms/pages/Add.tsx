@@ -1,3 +1,6 @@
+/**
+ * /rooms/add 직접 입력하기 화면
+ */
 import React, { CSSProperties, ReactElement } from "react";
 import { color } from "~/colors";
 import { BasicLayout } from "~/layouts";

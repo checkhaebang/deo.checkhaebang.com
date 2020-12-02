@@ -7,7 +7,7 @@
   "scripts": {
     "start": "craco start",
     "start:dev": "craco build && serve -s build",
-    "build": "craco build",
+    "build": "GENERATE_SOURCEMAP=false craco build",
     "test:ci": "CI=true craco test",
     "eject": "react-scripts eject",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
@@ -27,18 +27,17 @@
     "@typescript-eslint/parser": "^3.9.1",
     "husky": "^4.2.5",
     "standard-version": "^9.0.0",
-    "typescript": "^3.7.5"
-  },
-  "dependencies": {
-    "@craco/craco": "^5.7.0",
-    "@egjs/react-infinitegrid": "^3.0.6",
+    "typescript": "^3.7.5",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-lottie": "^1.2.5",
     "@types/react-redux": "^7.1.9",
     "@types/react-router-dom": "^5.1.6",
-    "@types/react-router-redux": "^5.0.18",
+    "@types/react-router-redux": "^5.0.18"
+  },
+  "dependencies": {
+    "@craco/craco": "^5.7.0",
     "craco-alias": "^2.1.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",

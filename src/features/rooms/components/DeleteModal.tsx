@@ -1,3 +1,6 @@
+/**
+ * 방 삭제하기 선택 시 나오는 모달 창
+ */
 import React, {
   CSSProperties,
   ReactElement,
@@ -29,7 +32,7 @@ const 모달_오버레이_style = (): CSSProperties => ({
   justifyContent: "center",
   alignItems: "center",
   boxSizing: "border-box",
-  height: 549,
+  height: 509,
   width: 360,
   zIndex: 1001,
   backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -60,7 +63,7 @@ type Props = {
   visible: boolean;
   setVisible: (visible: boolean) => void;
 };
-
+const modal_overlay = "modal_overlay";
 export const DeleteModal = forwardRef(
   (
     { room_price, visible, setVisible }: Props,
@@ -70,7 +73,9 @@ export const DeleteModal = forwardRef(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Unreachable code error
       if (ref.current && !ref.current.contains(e.target)) {
-        setVisible(false);
+        if ((e.target as HTMLDivElement).id === modal_overlay) {
+          setVisible(false);
+        }
       }
     };
     useEffect(() => {
@@ -86,11 +91,11 @@ export const DeleteModal = forwardRef(
           display: `${visible ? "flex" : "none"}`,
           justifyContent: "center",
           alignItems: "center",
-          marginTop: -549,
+          marginTop: -509,
           zIndex: 1000,
         }}
       >
-        <div style={모달_오버레이_style()}>
+        <div id={modal_overlay} style={모달_오버레이_style()}>
           <div ref={ref} style={모달_style()}>
             <img
               alt="dismiss"
