@@ -5,12 +5,15 @@ import "tslib";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import ReactGA from "react-ga";
 
 import store from "./store";
 import * as serviceWorker from "./serviceWorker";
 
 import "./App.css";
 import Root from "./routes";
+
+ReactGA.initialize("G-B6M718WEKZ");
 
 ReactDOM.render(
   <React.StrictMode>

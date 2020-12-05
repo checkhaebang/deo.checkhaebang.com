@@ -61,7 +61,7 @@ class Detail extends Component<Props, State> {
     this.props.fetchRooms();
     this.props.fetchChecklist();
   }
-  componentWillUnmount() {
+  componentDidUpdate() {
     this.props.saveAnswers();
   }
 
