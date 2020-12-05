@@ -79,6 +79,7 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          KAKAO_API_TOKEN: ${{ secrets.KAKAO_API_TOKEN }}
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:

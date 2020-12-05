@@ -7,7 +7,7 @@ import {
   withRouter,
 } from "react-router-dom";
 
-import { Google } from "./pages";
+import { Kakao } from "./pages";
 /**
  * /login
  * @param props
@@ -16,8 +16,8 @@ const LoginRouter: React.FC<RouteComponentProps> = (props) => {
   const { match } = props;
   return (
     <Switch>
-      <Route path={`${match.url}/google`} exact component={Google} />
-      <Redirect path={`${match.url}*`} exact to={`${match.url}/google`} />
+      <Route path={`${match.url}/kakao`} exact component={Kakao} />
+      <Redirect path={`${match.url}*`} exact to={`${match.url}/kakao`} />
     </Switch>
   );
 };
