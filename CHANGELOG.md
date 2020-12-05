@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.9.3...v1.10.0) (2020-12-05)
+
+
+### Features
+
+* kakao 로그인, google analytics ([#28](https://github.com/checkhaebang/deo.checkhaebang.com/issues/28)) ([b9b108a](https://github.com/checkhaebang/deo.checkhaebang.com/commit/b9b108a23e691febf8532ef03fb356234b028e0a))
+
 ### [1.9.3](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.9.2...v1.9.3) (2020-12-03)
 
 ### [1.9.2](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.9.1...v1.9.2) (2020-12-03)
