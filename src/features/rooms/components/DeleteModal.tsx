@@ -127,8 +127,8 @@ export const DeleteModal = forwardRef(
                 background={`${color.primaryDeepDarkBlue}`}
                 fontColor={`${color.basicWhite}`}
                 onClick={() => {
-                  setVisible(false);
                   console.log("delete");
+                  setVisible(false);
                 }}
               />
             </div>

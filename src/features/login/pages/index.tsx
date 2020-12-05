@@ -1,3 +1,3 @@
-import Google from "./Google";
+import Kakao from "./Kakao";
 
-export { Google };
+export { Kakao };
