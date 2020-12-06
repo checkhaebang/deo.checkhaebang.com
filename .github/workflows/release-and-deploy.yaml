@@ -1,6 +1,5 @@
 ---
 name: Release & Deploy
-# on: [push]
 on:
   pull_request:
     types: [closed]
@@ -85,6 +84,7 @@ jobs:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          REACT_APP_KAKAO_API_TOKEN: ${{ secrets.KAKAO_API_TOKEN }}
       - name: Slack notification
         uses: 8398a7/action-slack@v3
         with:
