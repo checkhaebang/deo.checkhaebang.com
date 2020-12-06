@@ -73,6 +73,11 @@ jobs:
         with:
           name: build
           path: build
+      - name: Variable to Dotenv
+        uses: TickX/var-to-dotenv@v1.1.3
+        with:
+          key: "KAKAO_API_TOKEN"
+          value: ${{ secrets.KAKAO_API_TOKEN }}
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@v1.5.0
         with:
