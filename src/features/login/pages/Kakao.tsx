@@ -26,7 +26,7 @@ export default function Kakao(): ReactElement {
 
       <div style={카카오로_시작하기_버튼_style()}>
         <KakaoLogin
-          token={`${process.env.KAKAO_API_TOKEN}`}
+          token={`${process.env.REACT_APP_KAKAO_API_TOKEN}`}
           onSuccess={() => history.push("/rooms")}
           onFail={(error) => console.error(error)}
           onLogout={(token) => console.info(token)}
