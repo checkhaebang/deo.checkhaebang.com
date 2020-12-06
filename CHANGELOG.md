@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.3](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.10.2...v1.10.3) (2020-12-06)
+
+
+### Bug Fixes
+
+* 환경변수 prefix 추가 (KAKAO_API_TOKEN) ([#31](https://github.com/checkhaebang/deo.checkhaebang.com/issues/31)) ([82a1346](https://github.com/checkhaebang/deo.checkhaebang.com/commit/82a1346c0351c838c32acb1f0c5f49a64748fd16))
+
 ### [1.10.2](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.10.1...v1.10.2) (2020-12-06)
 
 ### [1.10.1](https://github.com/checkhaebang/deo.checkhaebang.com/compare/v1.10.0...v1.10.1) (2020-12-06)
