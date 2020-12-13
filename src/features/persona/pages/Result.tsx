@@ -2,10 +2,13 @@
  * /persona/analyzing 페르소나 분석결과 화면
  */
 import React, { CSSProperties, ReactElement } from "react";
-import { persona, facebookIcon, kakaoIcon, urlIcon } from "~/assets";
 import reactStringReplace from "react-string-replace";
-import { color } from "~/colors";
 import { useHistory } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
+import { facebookIcon, kakaoIcon, urlIcon } from "~/assets";
+import { color } from "~/colors";
+import PersonaMapper from "~/features/persona/models/mapper";
 type Props = {
   persona_id: number;
   persona: string;
@@ -15,9 +18,10 @@ type Props = {
 };
 
 export default function Result(): ReactElement {
+  const { persona, recommend, description } = mock();
   const history = useHistory();
-  const description = reactStringReplace(
-    mock().description,
+  const _description = reactStringReplace(
+    description,
     /<hr>(.*)<\/hr>/g,
     (match, i) => (
       <span key={i} style={{ backgroundColor: color.secondaryYellow }}>
@@ -25,19 +29,45 @@ export default function Result(): ReactElement {
       </span>
     )
   );
+  const persona_img = PersonaMapper(persona);
+  console.log(persona, persona_img);
   return (
     <div style={page_style()}>
+      <Helmet
+        title={`당신의 자취 유형은 ${persona}!`}
+        meta={[
+          {
+            property: "og:title",
+            content: `당신의 자취 유형은 ${persona}!`,
+          },
+          {
+            property: "og:description",
+            content: `추천공간 : ${recommend}`,
+          },
+          {
+            property: "og:image:url",
+            content: `https://checkhaebang.netlify.app${persona_img}`,
+          },
+          {
+            property: "og:image:secure_url",
+            content: `https://checkhaebang.netlify.app${persona_img}`,
+          },
+          { property: "og:image:type", content: "image/png" },
+          { property: "og:image:width", content: "360" },
+          { property: "og:image:height", content: "210" },
+        ]}
+      />
       <div style={타이틀_style()}>
         <div style={당신의_자취유형은_style()}>당신의 자취 유형은</div>
         <div style={페르소나_이름_style()}>{mock().persona}</div>
       </div>
       <img
         style={{ height: 210, width: 360 }}
-        src={persona[mock().persona_id]}
+        src={persona_img}
         alt="persona0"
       />
       <p style={추천항목_style()}>{mock().recommend}</p>
-      <p style={추천설명_style()}>{description}</p>
+      <p style={추천설명_style()}>{_description}</p>
       <div style={{ marginLeft: 109, marginTop: 39 }}>
         {[facebookIcon, kakaoIcon, urlIcon].map((icon, index) => (
           // eslint-disable-next-line jsx-a11y/alt-text
@@ -69,7 +99,7 @@ export default function Result(): ReactElement {
 
 const mock = (): Props => ({
   persona_id: 0,
-  persona: "꼼꼼한 집순이!",
+  persona: "꼼꼼한 집순이/집돌이",
   recommend: "추천공간: 오피스텔, 주상복합",
   description: `집에서 오래지내는 만큼 <hr>이중 방문 구조</hr>에 거주하는 것이 현명하고, 10층 이하 대로변 건물은 피해주세요!\n집순이/집돌이에게는 <hr>주변 생활 편의 시설이 중요</hr>하겠죠? 자취방 500m 근처에 편의점, 마트, 병원, 공원이나 산책로가 있는지 꼭 확인해보세요!`,
   underline: "유형 진단 다시하기",

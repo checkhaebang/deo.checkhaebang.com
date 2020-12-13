@@ -38,11 +38,13 @@
   },
   "dependencies": {
     "@craco/craco": "^5.7.0",
+    "@types/react-helmet": "^6.1.0",
     "craco-alias": "^2.1.1",
     "react": "^16.13.1",
     "react-app-polyfill": "^1.0.6",
     "react-dom": "^16.13.1",
     "react-ga": "^3.3.0",
+    "react-helmet": "^6.1.0",
     "react-kakao-login": "^2.0.2",
     "react-lottie": "^1.2.3",
     "react-redux": "^7.2.1",
