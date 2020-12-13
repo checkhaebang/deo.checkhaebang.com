@@ -16,7 +16,7 @@ type ThumbnailProps = {
   persona_img: string;
 };
 
-function ThumbnailOpenGraph({
+function Thumbnail({
   persona,
   recommend,
   persona_img,
@@ -73,7 +73,7 @@ export default function Result(): ReactElement {
   console.log(persona, persona_img);
   return (
     <div style={page_style()}>
-      <ThumbnailOpenGraph
+      <Thumbnail
         persona={persona}
         recommend={recommend}
         persona_img={persona_img}
