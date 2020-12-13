@@ -6,6 +6,7 @@
   "author": "Mincheol Kim<nexters@kakao.com>",
   "scripts": {
     "start": "craco start",
+    "postbuild": "react-snap",
     "start:dev": "craco build && serve -s build",
     "build": "GENERATE_SOURCEMAP=false craco build",
     "test:ci": "CI=true craco test",
@@ -15,6 +16,12 @@
     "release": "standard-version",
     "version": "echo v$npm_package_version",
     "version:next": "node ./get-next-version.js"
+  },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/persona/result"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^10.0.0",
@@ -51,6 +58,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
     "react-scripts": "^3.4.4",
+    "react-snap": "^1.23.0",
     "react-string-replace": "^0.4.4",
     "redux": "^4.0.5",
     "redux-observable": "^1.2.0",

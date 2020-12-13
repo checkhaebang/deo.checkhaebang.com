@@ -9,13 +9,13 @@ import RoomRouter from "~/features/rooms/routes";
 import NoticeRouter from "~/features/notice/routes";
 import withTracker from "~/withTracker.jsx";
 
-const Root: React.FC = () => {
+const AppRoute: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={withTracker(LandingPage)} />
-        <Route path="/notice" component={withTracker(NoticeRouter)} />
         <Route path="/login" component={withTracker(LoginRouter)} />
+        <Route path="/notice" component={withTracker(NoticeRouter)} />
         <Route path="/persona" component={withTracker(PersonaRouter)} />
         <Route path="/checklist" component={withTracker(ChecklistRouter)} />
         <Route path="/rooms" component={withTracker(RoomRouter)} />
@@ -25,4 +25,4 @@ const Root: React.FC = () => {
   );
 };
 
-export default Root;
+export default AppRoute;
