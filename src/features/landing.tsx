@@ -5,7 +5,7 @@ import React, { ReactElement, CSSProperties } from "react";
 import { RouteComponentProps } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import { startIllust } from "~/assets";
+import { startIllust, start_illust_thumbnail } from "~/assets";
 import { color } from "~/colors";
 
 type ThumbnailProps = {
@@ -14,7 +14,7 @@ type ThumbnailProps = {
   image: string;
 };
 
-function ThumbnailOpenGraph({
+function Thumbnail({
   title,
   description,
   image,
@@ -54,10 +54,10 @@ export default function LandingPage({
 
   return (
     <div style={containerStyle()}>
-      <ThumbnailOpenGraph
+      <Thumbnail
         title="체크해방"
         description="자취할 땐? 체크해방!"
-        image={startIllust}
+        image={start_illust_thumbnail}
       />
       <div style={{ width: "100%", height: 207 }}>
         <p style={titleStyle()}>{TEXT().title}</p>
