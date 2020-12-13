@@ -9,6 +9,46 @@ import { Helmet } from "react-helmet";
 import { facebookIcon, kakaoIcon, urlIcon } from "~/assets";
 import { color } from "~/colors";
 import PersonaMapper from "~/features/persona/models/mapper";
+
+type ThumbnailProps = {
+  persona: string;
+  recommend: string;
+  persona_img: string;
+};
+
+function ThumbnailOpenGraph({
+  persona,
+  recommend,
+  persona_img,
+}: ThumbnailProps): ReactElement {
+  return (
+    <Helmet
+      title={`당신의 자취 유형은 ${persona}!`}
+      meta={[
+        {
+          property: "og:title",
+          content: `당신의 자취 유형은 ${persona}!`,
+        },
+        {
+          property: "og:description",
+          content: `추천공간 : ${recommend}`,
+        },
+        {
+          property: "og:image:url",
+          content: `https://checkhaebang.netlify.app${persona_img}`,
+        },
+        {
+          property: "og:image:secure_url",
+          content: `https://checkhaebang.netlify.app${persona_img}`,
+        },
+        { property: "og:image:type", content: "image/png" },
+        { property: "og:image:width", content: "360" },
+        { property: "og:image:height", content: "210" },
+      ]}
+    />
+  );
+}
+
 type Props = {
   persona_id: number;
   persona: string;
@@ -33,29 +73,10 @@ export default function Result(): ReactElement {
   console.log(persona, persona_img);
   return (
     <div style={page_style()}>
-      <Helmet
-        title={`당신의 자취 유형은 ${persona}!`}
-        meta={[
-          {
-            property: "og:title",
-            content: `당신의 자취 유형은 ${persona}!`,
-          },
-          {
-            property: "og:description",
-            content: `추천공간 : ${recommend}`,
-          },
-          {
-            property: "og:image:url",
-            content: `https://checkhaebang.netlify.app${persona_img}`,
-          },
-          {
-            property: "og:image:secure_url",
-            content: `https://checkhaebang.netlify.app${persona_img}`,
-          },
-          { property: "og:image:type", content: "image/png" },
-          { property: "og:image:width", content: "360" },
-          { property: "og:image:height", content: "210" },
-        ]}
+      <ThumbnailOpenGraph
+        persona={persona}
+        recommend={recommend}
+        persona_img={persona_img}
       />
       <div style={타이틀_style()}>
         <div style={당신의_자취유형은_style()}>당신의 자취 유형은</div>
