@@ -1,7 +1,51 @@
+/**
+ * / 첫 화면
+ */
 import React, { ReactElement, CSSProperties } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { Helmet } from "react-helmet";
+
 import { startIllust } from "~/assets";
 import { color } from "~/colors";
+
+type ThumbnailProps = {
+  title: string;
+  description: string;
+  image: string;
+};
+
+function ThumbnailOpenGraph({
+  title,
+  description,
+  image,
+}: ThumbnailProps): ReactElement {
+  return (
+    <Helmet
+      title={title}
+      meta={[
+        {
+          property: "og:title",
+          content: title,
+        },
+        {
+          property: "og:description",
+          content: description,
+        },
+        {
+          property: "og:image:url",
+          content: `https://checkhaebang.netlify.app${image}`,
+        },
+        {
+          property: "og:image:secure_url",
+          content: `https://checkhaebang.netlify.app${image}`,
+        },
+        { property: "og:image:type", content: "image/png" },
+        { property: "og:image:width", content: "360" },
+        { property: "og:image:height", content: "210" },
+      ]}
+    />
+  );
+}
 
 export default function LandingPage({
   history,
@@ -10,6 +54,11 @@ export default function LandingPage({
 
   return (
     <div style={containerStyle()}>
+      <ThumbnailOpenGraph
+        title="체크해방"
+        description="자취할 땐? 체크해방!"
+        image={startIllust}
+      />
       <div style={{ width: "100%", height: 207 }}>
         <p style={titleStyle()}>{TEXT().title}</p>
         <p style={subtitleStyle()}>{TEXT().subtitle}</p>
