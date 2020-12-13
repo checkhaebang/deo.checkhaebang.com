@@ -63,7 +63,11 @@ export default function LandingPage({
         <p style={titleStyle()}>{TEXT().title}</p>
         <p style={subtitleStyle()}>{TEXT().subtitle}</p>
       </div>
-
+      <img
+        style={{ display: "none" }}
+        src={start_illust_thumbnail}
+        alt="thumbnail"
+      />
       <img
         style={{ height: 226, objectFit: "contain" }}
         src={startIllust}
