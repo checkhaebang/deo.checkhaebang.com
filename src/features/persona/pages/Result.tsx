@@ -6,7 +6,7 @@ import reactStringReplace from "react-string-replace";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import { facebookIcon, kakaoIcon, urlIcon } from "~/assets";
+import { facebookIcon, kakaoIcon, urlIcon, common_thumbnail } from "~/assets";
 import { color } from "~/colors";
 import PersonaMapper from "~/features/persona/models/mapper";
 
@@ -70,13 +70,12 @@ export default function Result(): ReactElement {
     )
   );
   const persona_img = PersonaMapper(persona);
-  console.log(persona, persona_img);
   return (
     <div style={page_style()}>
       <Thumbnail
         persona={persona}
         recommend={recommend}
-        persona_img={persona_img}
+        persona_img={common_thumbnail}
       />
       <div style={타이틀_style()}>
         <div style={당신의_자취유형은_style()}>당신의 자취 유형은</div>

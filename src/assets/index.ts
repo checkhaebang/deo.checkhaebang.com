@@ -17,10 +17,12 @@ import persona_playplay_dodo from "./persona-playplay-dodo.png";
 import persona_pro_living_alone from "./persona-pro-living-alone.png";
 import persona_smart from "./persona-smart.png";
 import start_illust_thumbnail from "./start-illust-thumbnail.png";
+import common_thumbnail from "./common-thumbnail.png";
 
 export {
   startIllust,
   start_illust_thumbnail,
+  common_thumbnail,
   facebookIcon,
   kakaoIcon,
   urlIcon,
