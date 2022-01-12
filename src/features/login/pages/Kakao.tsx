@@ -2,7 +2,6 @@
  * /login/google 구글 로그인 화면
  */
 import React, { CSSProperties, ReactElement } from "react";
-import KakaoLogin from "react-kakao-login";
 
 import Lottie from "react-lottie";
 import { useHistory } from "react-router-dom";
@@ -24,15 +23,13 @@ export default function Kakao(): ReactElement {
       </div>
       <p style={보고싶다면_style()}>나만의 체크리스트를 보고 싶다면?</p>
 
-      <div style={카카오로_시작하기_버튼_style()}>
-        <KakaoLogin
-          token={`${process.env.REACT_APP_KAKAO_API_TOKEN}`}
-          onSuccess={() => history.push("/rooms")}
-          onFail={(error) => console.error(error)}
-          onLogout={(token) => console.info(token)}
-        >
-          <div>카카오로 시작하기</div>
-        </KakaoLogin>
+      <div
+        style={구글계정으로_시작하기_버튼_style()}
+        onClick={() => history.push("/rooms")}
+      >
+        <p style={구글계정으로_시작하기_버튼_글자_style()}>
+          구글 계정으로 시작하기
+        </p>
       </div>
     </div>
   );
@@ -63,12 +60,24 @@ const 보고싶다면_style = (): CSSProperties => ({
   textAlign: "center",
   margin: "79px 67px 0 67px",
 });
-const 카카오로_시작하기_버튼_style = (): CSSProperties => ({
+const 구글계정으로_시작하기_버튼_style = (): CSSProperties => ({
   display: "flex",
   justifyContent: "center",
   width: 312,
   height: 54,
   margin: "16px 24px 0 24px",
+  backgroundColor: color.primaryYellow,
+  cursor: "pointer",
   borderRadius: 4,
   boxShadow: "0 1px 1px 0 rgba(0,0,0,0.03)",
+});
+const 구글계정으로_시작하기_버튼_글자_style = (): CSSProperties => ({
+  height: 22,
+  fontSize: 16,
+  fontWeight: "bold",
+  fontStretch: "normal",
+  fontStyle: "normal",
+  lineHeight: 1.34,
+  letterSpacing: "normal",
+  textAlign: "center",
 });
