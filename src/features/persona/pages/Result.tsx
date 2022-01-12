@@ -51,7 +51,6 @@ export default function Result(): ReactElement {
       <div
         style={체크리스트_보러가기_버튼_style()}
         onClick={() => {
-          console.log("go");
           history.push("/checklist/creating");
         }}
       >
